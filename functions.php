@@ -191,3 +191,42 @@ function handle_form_submission() {
 
 add_action('wp_ajax_handle_form_submission', 'handle_form_submission');
 add_action('wp_ajax_nopriv_handle_form_submission', 'handle_form_submission');
+
+// カスタム投稿タイプ追加
+function create_custom_post_types() {
+	register_post_type(
+		'corporate',
+		array(
+			'labels' => array(
+				'name' => __('コーポレート'),
+				'singular_name' => __('コーポレート')
+			),
+			'public' => true,
+			'show_in_rest' => true,
+			'has_archive' => true,
+			'rewrite' => array('slug' => 'corporate'),
+			'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+			'taxonomies' => array('category')
+		)
+	);
+	register_post_type(
+		'consulting',
+		array(
+			'labels' => array(
+				'name' => __('コンサルティング'),
+				'singular_name' => __('コンサルティング')
+			),
+			'public' => true,
+			'show_in_rest' => true,
+			'has_archive' => true,
+			'rewrite' => array('slug' => 'consulting'),
+			'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+			'taxonomies' => array('category')
+		)
+	);
+}
+
+add_action('init', 'create_custom_post_types');
+
+// カスタムエンドポイント追加
+include get_stylesheet_directory() . '/functions/api-endpoints.php';
