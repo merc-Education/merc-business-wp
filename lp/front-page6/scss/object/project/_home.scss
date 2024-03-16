@@ -1,0 +1,1379 @@
+@use "../../global" as *;
+
+#eeasyForm{
+	position: absolute;
+}
+.p-bg{
+	&::before{
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: url(../img/home/bg_pc.jpg) 0 0 / cover no-repeat;
+		z-index: -1;
+		@include deviceSP{
+			background: url(../img/home/bg_sp.jpg) 0 0 / cover no-repeat;
+		}
+	}
+}
+.p-mv{
+	position: relative;
+	height: 900px;
+	padding: 10.625em 0 0;
+	@include deviceSP{
+		height: auto;
+		padding: 0 0 8vw;
+	}
+	&__block{
+		position: relative;
+		padding-top: 3.125em;
+		@include deviceSP{
+			padding: 0;
+		}
+	}
+	&-recruit{
+		position: absolute;
+		top: 0;
+		right: 0;
+		@include flex(center,center);
+		flex-flow: column;
+		width: 13.75em;
+		height: 13.75em;
+		text-align: center;
+		background: linear-gradient(135deg, $wh 0%, $accent 60%);
+		border-radius: 100%;
+		@include deviceSP{
+			top: 20vw;
+			right: 6.4vw;
+			width: 43.2vw;
+			height: 16vw;
+			border-radius: 0;
+		}
+		&__ttl{
+			text-align: center;
+			font-weight: 700;
+			line-height: 1.375;
+			color: $bk;
+			@include deviceSP{
+				font-size: 1.2rem;
+				line-height: 1.0;
+				margin-bottom: 2.1vw;
+			}
+		}
+		&-detail{
+			margin-top: 1em;
+			@include deviceSP{
+				@include flex(between,center);
+				flex-flow: row-reverse;
+				margin-top: 0;
+			}
+			&__number{
+				font-size: 2.2rem;
+				font-weight: 700;
+				line-height: 1.0;
+				color: $bk;
+				text-align: center;
+				@include deviceSP{
+					font-size: 1.4rem;
+					margin-left: 0.4em;
+				}
+			}
+			&__time{
+				display: inline-block;
+				font-weight: 700;
+				line-height: 1.0;
+				background: $bk;
+				color: $accent;
+				margin-top: 1em;
+				padding: 0.5em 0.4em;
+				@include deviceSP{
+					font-size: 1.2rem;
+					margin-top: 0;
+					padding: 0.3em;
+				}
+			}
+		}
+	}
+	&-detail{
+		text-align: center;
+		@include deviceSP{
+			padding: 40vw 6.4vw 0;
+		}
+		&__ttl{
+			text-align: center;
+			font-size: 6.0rem;
+			font-weight: 700;
+			line-height: 1.3;
+			letter-spacing: 0.1em;
+			@include deviceSP{
+				font-size: 3.0rem;
+				line-height: 1.25;
+				margin: 0;
+				letter-spacing: 0;
+			}
+		}
+		&-outline{
+			width: 760px;
+			border-top: 1px solid $wh;
+			border-bottom: 1px solid $wh;
+			margin: 1.75em auto 0;
+			padding: 1.5em 0 1.25em;
+			@include deviceSP{
+				width: auto;
+				margin-top: 4vw;
+				padding: 2.7vw 0 4vw;
+			}
+			&__ttl{
+				color: $wh;
+				font-size: 2.0rem;
+				font-weight: 700;
+				line-height: 1.0;
+				letter-spacing: 0.1em;
+				@include deviceSP{
+					font-size: 1.6rem;
+					line-height: 1.375;
+				}
+			}
+			&-list{
+				@include flex(between,center);
+				flex-wrap: wrap;
+				margin: 1.25em 0 0;
+				padding: 0 1.25em;
+				@include deviceSP{
+					@include flex(center,center);
+					margin-top: 2.7vw;
+					padding: 0;
+				}
+				&__item{
+					font-size: 1.4rem;
+					background: $wh;
+					color: $bk;
+					line-height: 1.0;
+					font-weight: 700;
+					padding: 0.714em 1.5em;
+					@include deviceSP{
+						font-size: 1.1rem;
+						margin: 2.7vw 1vw 0;
+						padding: 2vw 2.8vw;
+						&:first-child{
+							margin-left: 0;
+						}
+						&:nth-child(3){
+							margin-right: 0;
+						}
+						&:nth-child(-n+3){
+							margin-top: 0;
+						}
+					}
+				}
+			}
+		}
+		&-record{
+			&__img{
+				display: block;
+				text-align: center;
+				margin: 2em 0 1.25em;
+				@include deviceSP{
+					margin: 6.4vw 0 2.4vw;
+				}
+			}
+			&__txt{
+				text-align: center;
+				font-size: 1.2rem;
+				line-height: 1.0;
+				@include deviceSP{
+					text-align: left;
+					font-size: 1.0rem;
+					line-height: 1.6;
+				}
+			}
+		}
+		&__btn{
+			background: none;
+			margin-top: 2em;
+			@include deviceSP{
+				margin-top: 3.7vw;
+				padding: 0;
+			}
+		}
+	}
+	&__en{
+		position: fixed;
+		top: 22.5em;
+		left: 2.4em;
+		@include enfont;
+		font-size: 2.0rem;
+		writing-mode: vertical-rl;
+		line-height: 1.0;
+		z-index: 3;
+		@include deviceSP{
+			display: none;
+		}
+	}
+}
+.p-intro{
+	background: $bk;
+	padding-top: 100px;
+	@include deviceSP{
+		padding-top: 11.7vw;
+	}
+	&__block{
+		position: relative;
+		background: linear-gradient(135deg, $wh 0%, $accent 60%);
+		padding: 3.375em 0 3.125em;
+		@include deviceSP{
+			padding: 8.5vw 0 10.7vw;
+		}
+		&::before{
+			content: '';
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			width: calc(100% - 12px);
+			height: calc(100% - 12px);
+			background: $bk;
+			@include deviceSP{
+				top: 1.6vw;
+				left: 1.6vw;
+				width: calc(100% - 3.2vw);
+				height: calc(100% - 3.2vw);
+			}
+		}
+	}
+	&__txt{
+		position: relative;
+		@include flex(center,end);
+		font-size: 2.8rem;
+		line-height: 1.0;
+		font-weight: 700;
+		@include deviceSP{
+			font-size: 2.0rem;
+		}
+		img{
+			width: 14.214em;
+			@include deviceSP{
+				width: 62vw;
+			}
+		}
+		span{
+			display: inline-block;
+			padding-bottom: 6px;
+			margin-left: 0.857em;
+			@include deviceSP{
+				padding-bottom: 1vw;
+				margin-left: 0.5em;
+			}
+		}
+	}
+	&-detail{
+		position: relative;
+		text-align: center;
+		line-height: 2.6;
+		margin-top: 1.25em;
+		@include deviceSP{
+			line-height: 2.25;
+			margin-top: 1em;
+		}
+		&__pre{
+			display: inline;
+			font-size: 2.8rem;
+			font-weight: 700;
+			@include deviceSP{
+				display: block;
+				font-size: 2.0rem;
+			}
+		}
+		&__txt{
+			display: inline;
+			font-size: 2.8rem;
+			font-weight: 700;
+			@include deviceSP{
+				display: inline-block;
+				text-align: left;
+				font-size: 2.0rem;
+				width: 66vw;
+			}
+			span{
+				background: $wh;
+				color: $bk;
+				padding: 0.1em 0.2em 0.2em;
+				margin: 0 0.2em;
+			}
+		}
+	}
+}
+.p-voice{
+	background: $bk;
+	padding: 5.5em 0 10.625em;
+	overflow: hidden;
+	@include deviceSP{
+		padding: 16vw 0 23vw;
+	}
+	&-slide{
+		position: relative;
+		&__prev{
+			position: absolute;
+			top: 6em;
+			left: -60px;
+			width: 50px;
+			height: 50px;
+			z-index: 2;
+			transition: $duration;
+			cursor: pointer;
+			@include deviceSP{
+				display: none;
+			}
+			&:hover{
+				opacity: $opacity;
+			}
+			img{
+				width: 100%;
+				height: auto;
+			}
+		}
+		&__next{
+			position: absolute;
+			top: 6em;
+			right: -60px;
+			width: 50px;
+			height: 50px;
+			z-index: 2;
+			transition: $duration;
+			cursor: pointer;
+			@include deviceSP{
+				display: none;
+			}
+			&:hover{
+				opacity: $opacity;
+			}
+			img{
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+	&__slider{
+		width: 1100px;
+		margin: 0 auto;
+		@include deviceSP{
+			width: auto;
+		}
+	}
+	&-list{
+		margin-top: 4.375em;
+		@include deviceSP{
+			margin-top: 8vw;
+		}
+		&__item{
+			width: 20em;
+			@include deviceSP{
+				width: 100%;
+			}
+		}
+		&__ttl{
+			font-size: 1.8rem;
+			font-weight: 700;
+			text-align: center;
+			color: $accent;
+			margin: 0.8em 0 1.1em;
+		}
+		&__age{
+			position: relative;
+			font-size: 1.8rem;
+			font-weight: 700;
+			line-height: 1.0;
+			text-align: center;
+			color: $wh;
+			&::before,
+			&::after{
+				content: '';
+				position: absolute;
+				top: 50%;
+				width: 2.778em;
+				height: 1px;
+				background: $gl;
+			}
+			&::before{
+				left: 0;
+			}
+			&::after{
+				right: 0;
+			}
+		}
+		&__txt{
+			color: $wh;
+			line-height: 1.714;
+			font-size: 1.4rem;
+			margin: 1.4em 0 1.8em;
+		}
+		&__btn{
+			width: 12.5em;
+			height: 2.833em;
+			@include enfont;
+			font-size: 1.2rem;
+			font-weight: 700;
+			line-height: 1.0;
+			text-align: center;
+			margin: 0 auto;
+			a{
+				position: relative;
+				@include flex(center,center);
+				width: 100%;
+				height: 100%;
+				color: $accent;
+				border: 1px solid $accent;
+				border-radius: 3em;
+				&::before{
+					content: '';
+					position: absolute;
+					top: 50%;
+					right: 1em;
+					width: 0.5em;
+					height: 0.9em;
+					background: url(../img/common/icon_arrow_yl.svg) center center / 100% auto no-repeat;
+					transform: translateY(-50%);
+				}
+			}
+		}
+	}
+}
+.p-philosophy{
+	padding: 8.125em 0 9em;
+	@include deviceSP{
+		padding: 24vw 0;
+	}
+	&__block{
+		@include flex(between,stretch);
+		@include deviceSP{
+			display: block;
+		}
+	}
+	&-detail{
+		position: relative;
+		width: 40.625em;
+		padding-top: 2.375em;
+		@include deviceSP{
+			width: auto;
+			padding-top: 0;
+		}
+		&__txt{
+			$txt : &;
+			margin-top: 4.5em;
+			@include deviceSP{
+				font-size: 1.4rem;
+				margin-top: 13.3vw;
+			}
+			& + &{
+				margin-top: 2.8rem;
+				@include deviceSP{
+					margin-top: 2.6rem;
+				}
+			}
+			&--strong{
+				@extend #{$txt};
+				font-weight: 700;
+				font-size: 2.0rem;
+				color: $accent;
+				@include deviceSP{
+					font-size: 1.6rem;
+				}
+			}	
+		}
+		&-sign{
+			position: absolute;
+			bottom: 0.5em;
+			right: 0;
+			@include flex(end,end);
+			line-height: 1.0;
+			font-size: 1.4rem;
+			@include deviceSP{
+				position: relative;
+				bottom: auto;
+				right: auto;
+				margin-top: 10.7vw;
+			}
+			&__name{
+				font-size: 2.4rem;
+				margin-left: 0.5em;
+				@include deviceSP{
+					font-size: 2.0rem;
+				}
+			}
+		}
+	}
+	&-profile{
+		width: 21.25em;
+		@include deviceSP{
+			width: auto;
+			margin-top: 21.3vw;
+		}
+		&-img{
+			margin-bottom: 0.75em;
+			&__ttl{
+				background: $wh;
+				color: $nv;
+				font-weight: 700;
+				font-size: 2.0rem;
+				text-align: center;
+				line-height: 1.0;
+				padding: 0.9em 0 1em;
+				@include deviceSP{
+					font-size: 1.8rem;
+				}
+				span{
+					display: inline-block;
+					position: relative;
+					&::after{
+						content: '';
+						position: absolute;
+						left: 0;
+						bottom: -8px;
+						width: 100%;
+						height: 4px;
+						background: $nv;
+					}
+				}
+			}
+		}
+		&__catch{
+			font-size: 2.2rem;
+			line-height: 1.7;
+			text-align: center;
+			font-weight: 700;
+			@include deviceSP{
+				font-size: 2.0rem;
+			}
+			span{
+				display: inline-block;
+				line-height: 1.0;
+				border-bottom: 4px solid $accent;
+				padding-bottom: 4px;
+			}
+		}
+		&__ttl{
+			@include enfont;
+			font-size: 1.8rem;
+			text-align: center;
+			line-height: 1.0;
+			margin: 2.778em 0 1.1em;
+			@include deviceSP{
+				margin: 12.7vw 0 0.9em;
+			}
+		}
+		&__txt{
+			line-height: 2;
+			font-size: 1.4rem;
+		}
+	}
+}
+.p-advantages{
+	&__bg{
+		background: $bk;
+		padding: 10em 0 4.375em;
+		@include deviceSP{
+			padding: 16.5vw 0 11.2vw;
+		}
+	}
+	&__bg2{
+		padding: 5em 0;
+		@include deviceSP{
+			padding: 10.7vw 0;
+		}
+	}
+	&__bg3{
+		background: $bk;
+		padding: 4.625em 0 8.75em;
+		@include deviceSP{
+			padding: 12.8vw 0 22.9vw;
+		}
+	}
+	&-head{
+		@include flex(between,start);
+		position: relative;
+		padding-left: 3.125em;
+		margin-bottom: 5em;
+		@include deviceSP{
+			display: block;
+			padding: 0;
+			margin-bottom: 13vw;
+		}
+		&-number{
+			position: absolute;
+			top: 0;
+			left: 0;
+			&__num{
+				position: relative;
+				@include enfont;
+				width: 2.708em;
+				height: 2.708em;
+				font-size: 4.8rem;
+				color: $accent;
+				line-height: 1.0;
+				padding-top: 0.1em;
+				@include deviceSP{
+					width: 24.5vw;
+					height: 24.5vw;
+					font-size: 3.4rem;
+					padding-top: 1.5vw;
+				}
+				&::before{
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 3.7em;
+					height: 1px;
+					background: $accent;
+					transform: translate(-50%,-50%) rotate(-45deg);
+				}
+			}
+		}
+		&__ttl{
+			width: 15.6em;
+			font-size: 2.4rem;
+			line-height: 1.6;
+			text-align: center;
+			font-weight: 700;
+			padding-top: 2em;
+			@include deviceSP{
+				width: auto;
+				font-size: 2.0rem;
+				letter-spacing: 0.05em;
+				padding-top: 13vw;
+				margin-bottom: 8vw;
+			}
+			img{
+				display: block;
+				width: 7.917em;
+				margin: 0.417em auto 0;
+				@include deviceSP{
+					width: 50vw;
+				}
+			}
+		}
+		&__txt{
+			width: 54.286em;
+			font-size: 1.4rem;
+			line-height: 2;
+			@include deviceSP{
+				width: auto;
+			}
+			span{
+				font-size: 1.8rem;
+				font-weight: 700;
+				color: $accent;
+				@include deviceSP{
+					font-size: 1.6rem;
+				}
+			}
+		}
+	}
+	&-01{
+		&-content{
+			@include flex(between,start);
+			@include deviceSP{
+				display: block;
+			}
+			&__inner{
+				position: relative;
+				width: 370px;
+				@include deviceSP{
+					width: auto;
+					margin-top: 13.3vw;
+					& + &{
+						margin-top: 8vw;
+					}
+				}
+				img{
+					margin-left: -15px;
+					@include deviceSP{
+						display: none;
+					}
+				}
+				&:first-child{
+					img{
+						margin: 0 -30px 0 0;
+					}
+				}
+				&:last-child{
+					img{
+						margin-left: -30px;
+					}
+				}
+			}
+		}
+		&__ttl{
+			@include flex(center,center);
+			position: absolute;
+			top: 5.4em;
+			left: 50%;
+			width: 100%;
+			line-height: 1.0;
+			font-weight: 700;
+			font-size: 2.0rem;
+			letter-spacing: 0.1em;
+			transform: translateX(-50%);
+			@include deviceSP{
+				@include flex(start,center);
+				position: relative;
+				top: auto;
+				left: auto;
+				font-size: 1.8rem;
+				border-bottom: 1px solid $wh;
+				transform: none;
+				padding-bottom: 4.3vw;
+			}
+			span{
+				display: inline-block;
+				font-size: 1.6rem;
+				line-height: 1.0;
+				background: $accent;
+				color: $bk;
+				padding: 0.4em 0.8em;
+				margin-right: 0.875em;
+				text-indent: 0.1em;
+			}
+		}
+		&-list{
+			margin-top: 1.25em;
+			@include deviceSP{
+				margin-top: 3.2vw;
+			}
+			&__img{
+				display: block;
+			}
+			&__item{
+				position: relative;
+				line-height: 1.4;
+				font-size: 1.4rem;
+				padding: 0 0 0 1em;
+				@include deviceSP{
+					line-height: 1.3;
+				}
+				&::before{
+					content: '・';
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+				& + &{
+					margin-top: 0.6em;
+					@include deviceSP{
+						margin-top: 0.5em;
+					}
+				}
+			}
+		}
+	}
+	&-02{
+		.p-process-btn{
+			margin: 6vw auto 4.8vw;
+		}
+		&-list{
+			$list: &;
+			@include flex(between,start);
+			flex-wrap: wrap;
+			@include deviceSP{
+				display: block;
+				padding: 0 5.6vw;
+			}
+			&__item{
+				width: 280px;
+				@include deviceSP{
+					width: auto;
+					margin-top: 8.5vw;
+				}
+				&:first-child{
+					@include deviceSP{
+						margin-top: 0;
+					}
+				}
+				&:last-child{
+					width: 100%;
+					margin-top: 2.625em;
+					@include deviceSP{
+						margin-top: 8.5vw;
+					}
+				}
+			}
+			&__img{
+				display: block;
+			}
+			&__scroll{
+				position: relative;
+				@include deviceSP{
+					overflow-x: scroll;
+					margin: 0 -12vw;
+					padding: 0 0 0 12vw;
+					img{
+						width: 320vw;
+						margin-right: 12vw;
+					}
+				}
+				#{$list}__ttl{
+					position: absolute;
+					top: 0;
+					left: 0;
+					@include deviceSP{
+						left: 12vw;
+					}
+				}
+			}
+			&__ttl{
+				display: inline-block;
+				line-height: 1.0;
+				background: #333;
+				color: $wh;
+				font-weight: 700;
+				padding: 0.75em 1em;
+				@include deviceSP{
+					@include flex(center,center);
+					width: 26.7vw;
+					height: 10.7vw;
+					font-size: 1.4rem;
+					padding: 0;
+				}
+			}
+			&__txt{
+				font-size: 1.2rem;
+				line-height: 1.7;
+				margin-top: 1em;
+			}
+		}
+	}
+	&-03{
+		&-define{
+			@include flex(between,start);
+			flex-wrap: wrap;
+			width: 900px;
+			margin: 0 auto;
+			@include deviceSP{
+				display: block;
+				width: auto;
+			}
+			&__ttl{
+				width: 5.5em;
+				color: $accent;
+				font-weight: 700;
+				font-size: 2.0rem;
+				line-height: 1.0;
+				padding: 0.5em 0 0;
+				@include deviceSP{
+					width: auto;
+					font-size: 1.6rem;
+					padding: 0 0 2.7vw;
+				}
+			}
+			&__txt{
+				width: calc(100% - 7.188em);
+				@include deviceSP{
+					width: 100%;
+				}
+			}
+		}
+		&-content{
+			@include flex(between,start);
+			flex-wrap: wrap;
+			@include deviceSP{
+				width: 100%;
+			}
+			&__ttl{
+				width: 9em;
+				text-align: center;
+				font-size: 1.8rem;
+				border: 1px solid $wh;
+				line-height: 1.0;
+				margin-bottom: 1.1em;
+				padding: 0.556em 0;
+				@include deviceSP{
+					width: 30vw;
+					font-size: 1.4rem;
+					margin-bottom: 2.7vw;
+				}
+				&.last{
+					margin-bottom: 0;
+				}
+			}
+			&__txt{
+				width: 38em;
+				line-height: 1.5;
+				font-weight: 700;
+				margin-bottom: 1.25em;
+				padding-top: 0.5em;
+				@include deviceSP{
+					width: 53vw;
+					font-size: 1.35rem;
+					line-height: 1.4;
+					padding-top: 0.3em;
+					margin-bottom: 2.7vw;
+				}
+				&.last{
+					margin-bottom: 0;
+				}
+			}
+		}
+		&-img{
+			@include flex(between,stretch);
+			flex-wrap: wrap;
+			margin-top: 4.375em;
+			@include deviceSP{
+				margin-top: 7.5vw;
+			}
+			&__item{
+				width: 280px;
+				@include deviceSP{
+					width: 48%;
+					margin-top: 3.5vw;
+					&:nth-child(-n+2){
+						margin-top: 0;
+					}
+				}
+			}
+		}
+	}
+}
+.p-comparison{
+	padding: 10em 0;
+	@include deviceSP{
+		padding: 18vw 0 26vw;
+	}
+	&__img{
+		margin: 4.375em 0 0;
+		@include deviceSP{
+			margin: 13vw 0 0;
+			padding: 0;
+		}
+	}
+
+	.p-process-btn{
+		margin: 8vw auto 0;
+	}
+}
+.p-process{
+	background: $bk;
+	padding: 8.625em 0 10em;
+	@include deviceSP{
+		padding: 13.3vw 0 16vw;
+	}
+	&__img{
+		display: block;
+		text-align: center;
+		margin-top: 4.125em;
+		@include deviceSP{
+			margin: 6.4vw 6.4vw 0;
+		}
+	}
+	&-btn{
+		display: none;
+		width: 12.5em;
+		height: 2.833em;
+		@include enfont;
+		font-size: 1.2rem;
+		font-weight: 700;
+		line-height: 1.0;
+		text-align: center;
+		margin: 9.6vw auto;
+		@include deviceSP{
+			display: block;
+		}
+		&__link{
+			position: relative;
+			@include flex(center,center);
+			width: 100%;
+			height: 100%;
+			color: $accent;
+			border: 1px solid $accent;
+			border-radius: 3em;
+			&::before{
+				content: '';
+				position: absolute;
+				top: 50%;
+				right: 2.7vw;
+				width: 4vw;
+				height: 2px;
+				background: $accent;
+				transform: translateY(-50%);
+			}
+			&::after{
+				content: '';
+				position: absolute;
+				top: 50%;
+				right: calc(2.7vw + 2vw - 1px);
+				width: 2px;
+				height: 4vw;
+				background: $accent;
+				transform: translateY(-50%);
+			}
+		}
+	}
+}
+.p-flow{
+	padding: 8.75em 0 18.75em;
+	@include deviceSP{
+		padding: 24vw 0 40vw;
+	}
+	&__img{
+		display: block;
+		text-align: center;
+		margin-top: 4.125em;
+	}
+	&-list{
+		$list: &;
+		@include flex(center,stretch);
+		flex-wrap: wrap;
+		width: 960px;
+		margin: 4.375em auto 0;
+		@include deviceSP{
+			width: auto;
+			padding: 0 14.7vw;
+			margin: 16vw 0 0;
+		}
+		&__item{
+			position: relative;
+			width: 12.5em;
+			height: 12.5em;
+			border: 1px solid $wh;
+			text-align: center;
+			margin: 2.625em 1.25em 0;
+			padding-top: 1.625em;
+			@include deviceSP{
+				width: 100%;
+				height: 28vw;
+				margin: 6.4vw 0 0;
+				padding: 3.7vw 30.4vw 0 0;
+			}
+			&:nth-child(-n+4){
+				margin-top: 0;
+				@include deviceSP{
+					margin-top: 6.4vw;
+				}
+			}
+			&::before{
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: -1.5em;
+				width: 0.75em;
+				height: 1.25em;
+				background: url(../img/home/icon_flow.svg) 0 0 / auto 100% no-repeat;
+				transform: translateY(-50%);
+				@include deviceSP{
+					top: -4.7vw;
+					left: 50%;
+					width: 2.7vw;
+					height: 5.1vw;
+					transform: rotate(90deg) translateY(0) translateX(-50%);
+				}
+			}
+			&:first-child{
+				@include deviceSP{
+					margin-top: 0;
+				}
+				&::before{
+					content: none;
+				}
+			}
+			&.wh{
+				background: $wh;
+				&::after{
+					content: '';
+					position: absolute;
+					top: -1px;
+					left: -1px;
+					width: calc(100% + 2px);
+					height: calc(100% + 2px);
+					border: 4px solid $accent;
+				}
+			}
+			&:last-child{
+				#{$list}__ttl{
+					margin-top: 0.25em;
+				}
+				#{$list}__number{
+					margin-bottom: 0.6em;
+				}
+			}
+		}
+		&__img{
+			width: auto;
+			height: 69px;
+			@include deviceSP{
+				position: absolute;
+				top: 50%;
+				right: 8vw;
+				height: 18vw;
+				transform: translateY(-50%);
+			}
+		}
+		&__number{
+			position: relative;
+			font-size: 1.4rem;
+			font-weight: 700;
+			line-height: 1.0;
+			@include enfont;
+			color: $accent;
+			text-align: center;
+			margin-bottom: 1.1em;
+			padding: 0 0 1em;
+			@include deviceSP{
+				margin-bottom: 0.8em;
+				padding-bottom: 0.8em;
+			}
+			
+			.wh &{
+				color: $nv;
+				&::before{
+					background: $nv;
+				}
+			}
+			&::before{
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				width: 1.429em;
+				height: 2px;
+				background: $accent;
+				transform: translateX(-50%);
+			}
+		}
+		&__ttl{
+			text-align: center;
+			font-size: 1.8rem;
+			line-height: 1.3;
+			font-weight: 700;
+			margin-top: 0.778em;
+			@include deviceSP{
+				font-size: 1.6rem;
+			}
+			.wh &{
+				color: $nv;
+			}
+		}
+	}
+}
+.p-outline{
+	padding: 0 0 11.875em;
+	@include deviceSP{
+		padding: 0 0 21.3vw;
+	}
+	table{
+		width: 100%;
+		table-layout: fixed;
+		border-spacing: 0;
+		border-collapse: separate;
+		border: 3px solid rgba(112,112,112,0.5);
+		margin-top: 4.375em;
+		@include deviceSP{
+			margin-top: 15vw;
+		}
+		th{
+			width: 12.556em;
+			font-size: 1.8rem;
+			text-align: center;
+			font-weight: 700;
+			border-bottom: 1px solid rgba(112,112,112,0.5);
+			vertical-align: middle;
+			@include deviceSP{
+				width: 27.5vw;
+				font-size: 1.6rem;
+				line-height: 1.5;
+				vertical-align: top;
+				padding: 1em 0;
+			}
+		}
+		td{
+			font-size: 1.8rem;
+			@include enfont;
+			border-bottom: 1px solid rgba(112,112,112,0.5);
+			padding: 1.1em 1.1em 1.1em 0;
+			@include deviceSP{
+				font-size: 1.6rem;
+				line-height: 1.5;
+				padding: 1em 0.5em 1em 0;
+			}
+			&.small{
+				font-size: 1.6rem;
+				@include deviceSP{
+					font-size: 1.4rem;
+					padding-top: 1.3em;
+				}
+			}
+		}
+		tr{
+			&:first-child{
+				td{
+					@include jafont;
+				}
+			}
+			&:last-child{
+				th,
+				td{
+					border-bottom: 0;
+				}
+			}
+		}
+		
+	}
+
+	&__price{
+		font-size: 1.8rem;
+		@include deviceSP{
+			font-size: 1.6rem;
+			line-height: 1.2;
+			padding-top: 0.23em;
+		}
+		> span{
+			font-size: 1.4rem;
+			@include deviceSP{
+				display: inline-block;
+				font-size: 1.2rem;
+				line-height: 1.0;
+			}
+			&.plus{
+				font-size: 1.8rem;
+				margin-right: 0.4em;
+				@include deviceSP{
+					display: block;
+					font-size: 1.6rem;
+					text-align: center;
+					margin: 0.1em 0 0.3em;
+				}
+			}
+		}
+	}
+	&-time{
+		@include flex(between,start);
+		@include deviceSP{
+			display: block;
+		}
+		&__txt{
+			font-weight: 700;
+			font-size: 1.6rem;
+			@include deviceSP{
+				font-size: 1.3rem;
+			}
+		}
+	}
+	&-notes{
+		margin-top: 1em;
+		&__item{
+			position: relative;
+			font-size: 1.2rem;
+			font-weight: 400;
+			padding: 0 0 0 1em;
+			@include deviceSP{
+				font-size: 1.0rem;
+			}
+			&::before{
+				content: '※';
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+	}
+	&-dots{
+		margin-top: 1em;
+		&__item{
+			position: relative;
+			font-size: 1.6rem;
+			font-weight: 400;
+			padding: 0 0 0 1em;
+			@include deviceSP{
+				font-size: 1.4rem;
+			}
+			&::before{
+				content: '・';
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+	}
+}
+.p-faq{
+	background: $bk;
+	padding: 6.875em 0 8.75em;
+	@include deviceSP{
+		padding: 18.7vw 0 26.7vw;
+	}
+	&__ttl{
+		background: $accent;
+		color: $bk;
+		font-size: 2.0rem;
+		font-weight: 700;
+		line-height: 1.0;
+		letter-spacing: 0.05em;
+		margin-top: 2.5em;
+		padding: 0.5em 0.8em;
+		@include deviceSP{
+			font-size: 1.4rem;
+			margin-top: 8vw;
+		}
+		&:first-of-type{
+			margin-top: 3.1em;
+		}
+	}
+	&-define{
+		&__ttl{
+			@include flex(start,center);
+			position: relative;
+			font-size: 2.0rem;
+			font-weight: 700;
+			line-height: 1.6;
+			border-bottom: 1px solid $gl;
+			margin-top: 1.4em;
+			padding-bottom: 1em;
+			cursor: pointer;
+			@include deviceSP{
+				align-items: flex-start;
+				font-size: 1.4rem;
+				margin-top: 0.5em;
+				padding: 1em 10.7vw 1em 0;
+			}
+			&::before{
+				content: '';
+				position: absolute;
+				top: 0.35em;
+				right: 0;
+				width: 1.25em;
+				height: 1.25em;
+				background: url(../img/home/icon_faq_plus.svg) 0 0 / 100% auto no-repeat;
+				@include deviceSP{
+					top: 50%;
+					width: 6.7vw;
+					height: 6.7vw;
+					transform: translateY(-50%);
+				}
+			}
+			span{
+				display: inline-block;
+				flex-shrink: 0;
+				width: 2.65em;
+				@include enfont;
+				font-size: 4.0rem;
+				line-height: 1.0;
+				color: $accent;
+				@include deviceSP{
+					font-size: 2.4rem;
+				}
+			}
+			&.is-open{
+				&::before{
+					background: url(../img/home/icon_faq_minus.svg) 0 0 / 100% auto no-repeat;
+				}
+			}
+		}
+		&__txt{
+			display: none;
+			padding-top: 1.25em;
+			@include deviceSP{
+				font-size: 1.4rem;
+				padding: 1em 0 1em;
+			}
+		}
+	}
+}

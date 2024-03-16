@@ -1,0 +1,281 @@
+@charset "UTF-8";
+/*
+Theme Name: Emanon Pro child
+Theme URI: https://wp-emanon.jp
+Author: 株式会社イノ・コード
+Author URI: https://innocord.co.jp/
+Description: Emanon Pro の子テーマです。
+Template: emanon-pro
+Version: 1.2.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, theme-options
+
+Emanon Pro 子テーマ用のスタイルを以下に記述 
+カスタマイズ機能のCSS圧縮をオンにしている場合、オフに切り替えてからスタイルを追加し、その後、再度CSS圧縮を
+オンにしてください。
+*/
+.author-sns,
+.modal-menu {
+  display: none;
+}
+.wp-block-table th,
+.wp-block-table td {
+  font-size: 16px;
+}
+.wp-block-table tr:nth-child(odd) {
+  background: #f1f2f3;
+}
+/* ヘッダー */
+div[role="header"] {
+  padding: 15px 24px;
+}
+@media screen and (max-width: 767px) {
+  div[role="header"] {
+    padding: 12px 15px;
+  }
+  div[role="header"] img {
+    width: 224px;
+    height: auto;
+  }
+}
+
+section.article-body p {
+  font-size: 18px;
+}
+
+/* 目次 */
+#toc_container {
+  position: relative;
+}
+#toc-status-button {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+#toc_container p.toc_title {
+  margin-top: 0;
+}
+
+/* 全ページ共通フッター */
+.c-footer {
+  padding: 35px 0;
+  background: #000;
+}
+.c-footer * {
+  color: #fff!important;
+}
+@media screen and (max-width: 767px) {
+  .c-footer {
+    padding: 39px 6.7vw 20px;
+  }
+}
+.c-footer__top {
+  width: 728px;
+  margin: 0 auto;
+}
+.c-footer__bottom {
+  width: 772px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 767px) {
+  .c-footer__top,
+  .c-footer__bottom {
+    width: auto;
+  }
+}
+.c-footer-outline {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -ms-flex-align: end;
+  -webkit-box-align: end;
+          align-items: flex-end;
+  border-bottom: 1px solid #fff;
+  padding: 0 0 1em;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-outline {
+    display: block;
+    padding: 0 0 0.8em;
+  }
+}
+.c-footer-outline__name {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-outline__name {
+    font-size: 2rem;
+  }
+}
+.c-footer-outline__name span {
+  font-family: "Gotham SSm A", "Gotham SSm B", "Noto Sans JP", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+.c-footer-outline__txt {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-outline__txt {
+    font-size: 1.2rem;
+    margin-top: 0.8em;
+  }
+}
+.c-footer-contact {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -ms-flex-align: start;
+  -webkit-box-align: start;
+          align-items: flex-start;
+  margin-top: 1.125em;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-contact {
+    display: block;
+  }
+}
+.c-footer-contact__mail {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: start;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+          align-items: center;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Noto Sans JP", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-contact__mail {
+    font-size: 2rem;
+  }
+}
+.c-footer-contact__mail img {
+  width: 1.143em;
+  height: auto;
+  margin-right: 0.3em;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-contact__mail img {
+    width: 7vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .c-footer-contact-tel {
+    margin-top: 3.7vw;
+  }
+}
+.c-footer-contact-tel__number {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Noto Sans JP", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-contact-tel__number {
+    font-size: 2rem;
+  }
+}
+.c-footer-contact-tel__number img {
+  display: inline-block;
+  width: 1.071em;
+  height: auto;
+  margin-right: 0.3em;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-contact-tel__number img {
+    width: 7vw;
+  }
+}
+.c-footer-contact-tel__time {
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-top: 0.6em;
+  padding-left: 3.3em;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-contact-tel__time {
+    padding-left: 0;
+  }
+}
+.c-footer-list {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+          align-items: center;
+  margin: 2.25em auto 0;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-list {
+    display: block;
+    width: auto;
+    margin-top: 13vw;
+  }
+}
+.c-footer-list__item {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+@media screen and (max-width: 767px) {
+  .c-footer-list__item {
+    margin-top: 1em;
+  }
+  .c-footer-list__item:first-child {
+    margin-top: 0;
+  }
+}
+.c-footer-list__item a {
+  position: relative;
+  display: inline-block;
+  padding: 0 0 0 1.5em;
+}
+.c-footer-list__item a::before {
+  content: "＞";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.c-footer__copy {
+  font-family: "Gotham SSm A", "Gotham SSm B", "Noto Sans JP", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1;
+  margin-top: 2.375em;
+}
+@media screen and (max-width: 767px) {
+  .c-footer__copy {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-top: 13vw;
+  }
+}

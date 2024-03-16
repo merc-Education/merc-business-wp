@@ -1,0 +1,231 @@
+@use "../global" as *;
+
+.l-header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	transition: $duration;
+	padding: 0;
+	z-index: 1000;
+	@include deviceSP{
+		height: 18vw;
+	}
+	.is-fixed &{
+		height: 100dvh;
+		overflow-y: scroll;
+		background: $nv;
+	}
+	&-head{
+		width: 100%;
+		@include flex(between,end);
+		padding: 0 0 0 3em;
+		@include deviceSP{
+			width: 100%;
+			@include flex(between,center);
+			padding: 0 0 0 6.7vw;
+		}
+		&-logo{
+			line-height: 1.0;
+			width: 18.5em;
+			@include deviceSP{
+				width: 63.5vw;
+			}
+			img{
+				width: 100%;
+				height: auto;
+			}
+
+		}
+		&-btn{
+			@include flex(between,stretch);
+			@include deviceSP{
+				display: none;
+			}
+			&__item{
+				width: 12.222em;
+				height: 3.889em;
+				font-size: 1.8rem;
+				letter-spacing: 0.1em;
+				font-weight: 700;
+				line-height: 0;
+				@include deviceSP{
+					width: 50%;
+				}
+				& + &{
+					a,
+					button{
+						background: linear-gradient(135deg, $bl 0%, $pu 100%);
+					}
+				}
+				a,
+				button{
+					position: relative;
+					@include flex(start,center);
+					width: 100%;
+					height: 100%;
+					color: $wh;
+					line-height: 1.0;
+					padding-left: 1.3em;
+					background: linear-gradient(135deg, $pk 0%, $dr 100%);
+					&::before{
+						content: '';
+						position: absolute;
+						top: 50%;
+						right: 0.889em;
+						width: 0.556em;
+						height: 1em;
+						background: url(../img/common/icon_arrow_wh.svg) 0 0 / 100% auto no-repeat;
+						transform: translateY(-50%);
+					}
+				}
+			}
+			@include deviceSP{
+				
+			}            
+		}
+		&-toggle{
+			display: none;
+			position: relative;
+			width: 18vw;
+			height: 18vw;
+			@include deviceSP{
+				@include flex(center,center);
+			}
+			&::after{
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 10.7vw;
+				height: 10.7vw;
+				background: url(../img/common/icon_toggle_off.svg) center center / 100% auto no-repeat;
+				transform: translate(-50%,-50%);
+				transition: opacity $duration;
+			}
+			&::before{
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 10.7vw;
+				height: 10.7vw;
+				background: url(../img/common/icon_toggle_on.svg) center center / 100% auto no-repeat;
+				transform: translate(-50%,-50%);
+				transition: opacity $duration;
+				opacity: 0;
+			}
+			&.is-open{
+				&::after{
+					opacity: 0;
+				}
+				&::before{
+					opacity: 1;
+				}
+			}
+			&__img{
+				width: 5.9vw;
+				transition: $duration;
+				.is-open &{
+					opacity: 0;
+				}
+			}
+		}
+	}
+	&-menu{
+		display: none;
+		@include deviceSP{
+			pointer-events: none;
+			display: block;
+			opacity: 0;
+			transition: $duration;
+			padding: 6.4vw 6.7vw 7.2vw;
+			.is-fixed &{
+				pointer-events: all;
+				opacity: 1;
+			}
+		}
+		&__gnavi{
+			@include flex(end,center);
+			@include deviceSP{
+				display: block;
+				width: 100%;
+			}
+		}
+		&__btn{
+			@include deviceSP{
+				background: transparent!important;
+				padding: 0!important;
+			}
+		}
+	}
+	&-gnavi{
+		$this: &;
+		display: block;
+		margin: 0 0 10.7vw;
+		&__item{
+			$item: &;
+			font-size: 1.6rem;
+			font-weight: 500;
+			line-height: 1.0;
+			border-bottom: 1px solid $gl;
+			> a{
+				position: relative;
+				@include flex(start,center);
+				height: 12vw;
+				color: $wh;
+				padding: 0 0 0 2.7vw;
+				&::before{
+					content: '';
+					position: absolute;
+					top: 50%;
+					right: 2.1vw;
+					width: 2.7vw;
+					height: 4.3vw;
+					background: url(../img/common/icon_arrow_yl_sp.svg) center center / auto 100% no-repeat;
+					transform: translateY(-50%);
+				}
+				> span{
+					display: block;
+					@include enfont;
+					font-size: 1.8rem;
+					margin-bottom: 0.5em;
+					@include deviceSP{
+						margin: 0 1.5em 0 0;
+					}
+				}
+			}
+			& + &{
+				margin-left: 5em;
+				@include deviceSP{
+					margin-left: 0;
+				}
+			}
+		}
+	}
+}
+.is-fixed{
+}
+.l-overlay{
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background: rgba(0,0,0,0.3);
+	transition: $duration;
+	z-index: 2;
+	&.is-active{
+		opacity: 1;
+		@include deviceSP{
+			opacity: 0;
+		}
+	}
+	&.is-sp-active{
+		@include deviceSP{
+			opacity: 1;
+		}
+	}
+}

@@ -1,0 +1,294 @@
+// color
+$base_color: #011B39;
+
+$key_color: #D92A0F;
+$key_color02: #EFD774;
+
+$white:#fff;
+$green:#20AC76;
+$blue:#3A80BF;
+
+//duration
+$duration: .4s;
+$opacity: 0.7;
+
+//font-weight
+$bold: bold;
+$medium: 500;
+
+
+// ------------------------------------------
+// @media
+// ------------------------------------------
+@mixin devicePC {
+	@media screen and (min-width: 768px) {
+		@content;
+	}
+}
+@mixin deviceTAB {
+	@media screen and (max-width: 1024px) {
+		@content;
+	}
+}
+
+@mixin deviceSP {
+	@media screen and (max-width: 767px) {
+		@content;
+	}
+}
+@mixin deviceSP_MIN {
+	@media screen and (max-width: 390px) {
+		@content;
+	}
+}
+
+@mixin rt() {
+	@media screen and (-webkit-min-device-pixel-ratio:2), (min-resolution: 2dppx){
+		@content;
+	}
+}
+
+@mixin landscape() {
+	@media screen and (orientation: landscape) and (max-width: 767px){
+		@content;
+	}
+}
+
+@mixin portrait() {
+	@media screen and (orientation: portrait) and (max-width: 767px){
+		@content;
+	}
+}
+
+@mixin fz($font-size, $line-height:0, $letter-spacing:0,$font-weight:0){
+	//  font-size
+	font-size: ($font-size / 10) + rem;
+	//  line-height
+	@if($line-height!=0){
+		line-height: ($line-height / $font-size);
+	}
+	// letter-spacing
+	@if($letter-spacing!=0){
+		letter-spacing: ($letter-spacing / 1000) * 1em;
+	}
+	// font-weight
+	@if($font-weight!=0){
+		font-weight: ($font-weight) ;
+	}
+}
+
+/* --------------------------------------------------
+	section size
+-------------------------------------------------- */
+
+// flex
+@mixin flex($justify:0, $align:0, $wrap:0, $wrap_align:0) {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+
+	// justify-content
+	@if $justify == start {
+		-webkit-justify-content: flex-start;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	} @else if $justify == end {
+		-webkit-justify-content: flex-end;
+		-ms-flex-pack: end;
+		justify-content: flex-end;
+	} @else if $justify == center {
+		-webkit-justify-content: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	} @else if $justify == between {
+		-webkit-justify-content: space-between;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	} @else if $justify == around {
+		-webkit-justify-content: space-around;
+		-ms-flex-pack: distribute;
+		justify-content: space-around;
+	}
+
+	// align-items
+	@if $align == start {
+		-webkit-align-items: flex-start;
+		-ms-flex-align: start;
+		align-items: flex-start;
+	} @else if $align == end {
+		-webkit-align-items: flex-end;
+		-ms-flex-align: end;
+		align-items: flex-end;
+	} @else if $align == center {
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		align-items: center;
+	} @else if $align == baseline {
+		-webkit-align-items: baseline;
+		-ms-flex-align: baseline;
+		align-items: baseline;
+	} @else if $align == stretch {
+		-webkit-align-items: stretch;
+		-ms-flex-align: stretch;
+		align-items: stretch;
+	}
+
+	// flex-wrap
+	@if $wrap == nowrap {
+		-webkit-flex-wrap: nowrap;
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+	} @else if $wrap == wrap {
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+	} @else if $wrap == reverse {
+		-webkit-flex-wrap: wrap-reverse;
+		-ms-flex-wrap: wrap-reverse;
+		flex-wrap: wrap-reverse;
+	}
+
+	// align-content
+	@if $wrap_align == start {
+		-webkit-align-content: flex-start;
+		-ms-flex-line-pack: start;
+		align-content: flex-start;
+	} @else if $wrap_align == end {
+		-webkit-align-content: flex-end;
+		-ms-flex-line-pack: end;
+		align-content: flex-end;
+	} @else if $wrap_align == center {
+		-webkit-align-content: center;
+		-ms-flex-line-pack: center;
+		align-content: center;
+	} @else if $wrap_align == between {
+		-webkit-align-content: space-between;
+		-ms-flex-line-pack: justify;
+		align-content: space-between;
+	} @else if $wrap_align == around {
+		-webkit-align-content: space-around;
+		-ms-flex-line-pack: distribute;
+		align-content: space-around;
+	} @else if $wrap_align == stretch {
+		-webkit-align-content: stretch;
+		-ms-flex-line-pack: stretch;
+		align-content: stretch;
+	}
+}
+
+// trimming
+@mixin trimming{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+@mixin objectfit{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+// triangle
+@mixin triangle($width, $height, $direction: right, $color: currentColor) {
+	@if not index(top right bottom left top-right bottom-right bottom-left top-left, $direction) {
+		@warn "$direction must be one of `top`, `right`, `bottom`, `left`, `top-right`, `bottom-right`, `bottom-left`, `top-left`; currently `#{$direction}`.";
+	}
+	width: 0;
+	height: 0;
+	border-style: solid;
+
+	@if $direction == top {
+		border-color: transparent transparent $color transparent;
+		border-width: 0 ($width / 2) $height ($width / 2);
+	}
+
+	@if $direction == right {
+		border-color: transparent transparent transparent $color;
+		border-width: ($height / 2) 0 ($height / 2) $width;
+	}
+
+	@if $direction == bottom {
+		border-color: $color transparent transparent transparent;
+		border-width: $height ($width / 2) 0 ($width / 2);
+	}
+
+	@if $direction == left {
+		border-color: transparent $color transparent transparent;
+		border-width: ($height / 2) $width ($height / 2) 0;
+	}
+
+	@if $direction == top-right {
+		border-color: transparent $color transparent transparent;
+		border-width: 0 $width $height 0;
+	}
+
+	@if $direction == bottom-right {
+		border-color: transparent transparent $color transparent;
+		border-width: 0 0 $height $width;
+	}
+
+	@if $direction == bottom-left {
+		border-color: transparent transparent transparent $color;
+		border-width: $height 0 0 $width;
+	}
+
+	@if $direction == top-left {
+		border-color: $color transparent transparent transparent;
+		border-width: $height $width 0 0;
+	}
+}
+
+
+// arrow >
+@mixin arrow($width, $bold, $color, $deg) {
+	border-style: solid;
+	border-width: 0 #{$bold}px #{$bold}px 0;
+	content: "";
+	display: inline-block;
+	position: absolute;
+	height: #{$width}rem;
+	width: #{$width}rem;
+	border-color: #{$color};
+
+	@if ( $deg == "left" )        { transform: rotate(135deg); }
+	@else if ( $deg == "top" )    { transform: rotate(225deg); }
+	@else if ( $deg == "right" )  { transform: rotate(-45deg); }
+	@else if ( $deg == "bottom" ) { transform: rotate(45deg);  }
+
+	@include deviceSP() {
+		height: #{$width/2}rem;
+		width: #{$width/2}rem;
+	}
+}
+
+// placeholder
+@mixin placeholder($color) {
+	&::placeholder {
+		color: $color;
+	}
+
+	// IE
+	&:-ms-input-placeholder {
+		color: $color;
+	}
+	/* Firefox 18 以前 */
+	&:-moz-placeholder {
+			color: $color;
+	}
+	/* Firefox 19 以降 */
+	&::-moz-placeholder {
+			color: $color;
+			opacity: 1;
+	}
+	// Edge
+	&::-ms-input-placeholder {
+		color: $color;
+	}
+}
+
+// gradient
+@mixin gradient($direction, $color-1, $color-2) {
+	background-image: linear-gradient($direction, $color-1, $color-2);
+}
+

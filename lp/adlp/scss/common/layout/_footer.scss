@@ -1,0 +1,228 @@
+@use "../config" as *;
+
+/* f-btm
+---------------------------------------------------------------------------- */
+.f-btm{
+	position: relative;
+	padding-bottom: 3rem;
+	box-sizing: border-box;
+	z-index: 2;
+	@include deviceSP {
+		padding-bottom: 3.4rem;
+		.sec-outline{
+			padding-bottom: 12rem;
+			.c-tbl .text{
+				margin-bottom: 1.6rem;
+			}
+		}
+	}
+	.contact_wrap{
+		max-width: 76rem;
+		margin: 9rem auto 0 auto;
+		@media screen and (max-width: 1279px) {
+			max-width: 90rem;
+		}
+		@include deviceSP {
+			max-width: inherit;
+			margin: 7rem auto 0 auto;
+			padding: 0 3rem;
+			box-sizing: border-box;
+		}
+		.flex{
+			@include flex(start, start, nowrap, stretch);
+			gap: 0 6rem;
+			@include deviceSP {
+				display: block;
+			}
+		}
+		.contact{
+			&__ttl{
+				color: $white;
+				@include fz(28,38,0,700);
+				letter-spacing: 0;
+				padding-bottom: .5rem;
+				margin-bottom: 1.5rem;
+				border-bottom: 1px solid $white;
+				box-sizing: border-box;
+				@include deviceSP {
+					text-align: left;
+					@include fz(20,32,0,700);
+					padding-bottom: 1rem;
+					margin-bottom: 1.5rem;
+				}
+				.en{
+					margin-right: .5rem;
+				}
+				.small{
+					margin-left: 3.2rem;
+					@include fz(14,32,0,400);
+					letter-spacing: 0;
+					@include deviceSP {
+						display: block;
+						margin-left: 0;
+						@include fz(12,22,0,400);
+					}
+				}
+			}
+			&__mail{
+				p,a{
+					@include fz(28,32,0,700);
+					letter-spacing: 0;
+					color: $white;
+					@include deviceSP {
+						@include fz(20,25,0,700);
+					}
+				}
+				.ico{
+					&:before{
+						top: .7rem;
+						background: url("../../images/common/icon_mail.svg") no-repeat center center;
+						width: 3.5rem;
+						height: 2.5rem;
+						@include deviceSP {
+							top: .6rem;
+							width: 2.6rem;
+							height: 1.8rem;
+						}
+					}
+				}
+			}
+			&__tel{
+				@include deviceSP {
+					margin-top: 1rem;
+				}
+				p,a{
+					@include fz(28,32,0,700);
+					letter-spacing: 0;
+					color: $white;
+					@include deviceSP {
+						@include fz(20,32,0,700);
+					}
+				}
+				.tel-txt{
+					@include fz(12,18,0,400);
+					letter-spacing: 0;
+					padding-top: .5rem;
+					padding-left: 4.3rem;
+					@include deviceSP {
+						@include fz(12,18,0,400);
+						padding-top: .3rem;
+						padding-left: 0;
+					}
+				}
+				.ico{
+					&:before{
+						top: .2rem;
+						background: url("../../images/common/icon_tel.svg") no-repeat center center;
+						width: 3.2rem;
+						height: 3.2rem;
+						@include deviceSP {
+							top: .5rem;
+							width: 2.3rem;
+							height: 2.3rem;
+						}
+					}
+				}
+			}
+		}
+		.ico{
+			position: relative;
+			padding-left: 4.2rem;
+			box-sizing: border-box;
+			@include deviceSP {
+				padding-left: 3.2rem;
+			}
+			&:before{
+				position: absolute;
+				left: 0;
+				display: block;
+				content: '';
+				background-size: 100% auto !important;
+			}
+		}
+	}
+
+}
+
+/*------------- .l-footer -------------*/
+/*.l-footer{
+	padding: 0 0 3rem 0;
+	box-sizing: border-box;
+	@include deviceSP {
+		padding: 0 0 8rem 0;
+	}
+	.f-nav{
+		width: 100%;
+		max-width: 76rem;
+		margin: 0 auto 9.5rem auto;
+		@media screen and (max-width: 1279px) {
+			max-width: 90rem;
+		}
+		@include deviceSP {
+			width: 100%;
+			max-width: inherit;
+			padding: 0 3rem;
+			margin-bottom: 3rem;
+			box-sizing: border-box;
+		}
+		&__list{
+			@include flex(start, start, nowrap, stretch);
+			gap: 0 2.2rem;
+			@include deviceSP {
+				flex-direction: column;
+				gap: 0 0;
+			}
+			li{
+				position: relative;
+				@include deviceSP {
+					@include fz(14,28,0,400);
+				}
+				a{
+					color: $white;
+					@include fz(14,32,0,400);
+					letter-spacing: 0;
+					@include devicePC {
+						&:hover{
+							text-decoration: underline;
+						}
+					}
+					@include deviceSP {
+						@include fz(14,28,0,400);
+					}
+				}
+				&:before{
+					position: relative;
+					top: -.1rem;
+					display: inline-block;
+					vertical-align: middle;
+					content: '＞';
+					margin-right: .5rem;
+					color: $white;
+					@include fz(14,32,0,400);
+					letter-spacing: 0;
+				}
+			}
+		}
+	}
+	.copy{
+		text-align: center;
+		color: $white;
+		@include fz(16,32,0,700);
+		letter-spacing: 0;
+		@include deviceSP {
+			@include fz(12,32,0,700);
+			text-align: left;
+			padding: 0 3rem;
+			box-sizing: border-box;
+		}
+	}
+
+}*/
+.c-footer{
+	position: relative;
+	background: #011B39 !important;
+	padding: 9rem 0 3rem 0 !important;
+	@include deviceSP {
+		padding: 7rem 0 8rem 0 !important;
+	}
+}

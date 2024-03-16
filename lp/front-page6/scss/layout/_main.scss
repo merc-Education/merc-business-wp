@@ -1,0 +1,36 @@
+@use "../global" as *;
+
+.l{
+    &-layout{
+        &__l{
+            position: relative;
+            width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            @include deviceSP{
+                width: auto;
+                padding: 0 6.7vw;
+            }
+        }
+		&__m{
+			position: relative;
+			width: 1100px;
+			margin: 0 auto;
+			box-sizing: border-box;
+			@include deviceSP{
+				width: auto;
+				padding: 0 6.7vw;
+			}
+		}
+		&__s{
+			position: relative;
+			width: 1000px;
+			margin: 0 auto;
+			box-sizing: border-box;
+			@include deviceSP{
+				width: auto;
+				padding: 0 6.7vw;
+			}
+		}
+    }
+}

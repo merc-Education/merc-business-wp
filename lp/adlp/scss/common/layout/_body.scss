@@ -1,0 +1,108 @@
+@use "../config" as *;
+
+.en{
+	font-family: "Gotham SSm A", "Gotham SSm B", "Noto Sans JP", sans-serif;
+	font-weight: 700;
+}
+.en.w-black{
+	font-family: "Gotham SSm A", "Gotham SSm B", "Noto Sans JP", sans-serif;
+	font-weight: 900;
+	font-size: 6.5rem;
+}
+
+.en02{
+	font-family: "shelby", sans-serif;
+}
+
+
+/* base
+---------------------------------------------------------------------------- */
+
+html {
+	font-size: calc(100vw * 10 / 1280);
+	@media screen and (min-width: 1280px) {
+		font-size: 62.5%;
+	}
+	@include deviceSP {
+		font-size: calc(100vw * 10 / 375);
+	}
+}
+
+body {
+	position: relative;
+	font-family: 'Noto Sans JP', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	color: $base_color;
+	@include fz(15);
+/*	min-width: 1280px;*/
+	@include deviceSP {
+		min-width: inherit;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: $base_color;
+	@include devicePC {
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	@include deviceSP {
+		width: 100%;
+		max-width: inherit;
+	}
+}
+
+*{
+	word-break: break-all;
+}
+input,
+textarea {
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 0;
+}
+#eeasyForm{
+	position: absolute;
+	top: 0;
+	z-index: -999;
+}
+
+/*------------- .l-pagebody -------------*/
+.main_cnts{
+	width: 100%;
+	overflow: hidden;
+}
+.l-wrapper{
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 2rem;
+	@media screen and (min-width: 1280px) {
+		padding: 0;
+	}
+	@include deviceSP {
+		width: 100%;
+		max-width: inherit;
+		padding: 0 2.5rem;
+		box-sizing: border-box;
+	}
+}
+.l-inner{
+	width: 92%;
+	max-width: 1000px;
+	margin: 0 auto;
+	@include deviceSP {
+		width: 100%;
+		max-width: inherit;
+		padding: 0 2rem;
+		box-sizing: border-box;
+	}
+}

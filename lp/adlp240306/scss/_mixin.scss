@@ -1,0 +1,237 @@
+@charset "UTF-8";
+// 関数
+
+// Round（四捨五入）
+@function round_decimal($number, $digits: 4) {
+  @return to_fixed($number, $digits, "round");
+}
+
+// Ceil（切り上げ）
+@function cell_decimal($number, $digits: 4) {
+  @return to_fixed($number, $digits, "seil");
+}
+
+// Floor（切り下げ）
+@function floor_decimal($number, $digits: 4) {
+  @return to_fixed($number, $digits, "floor");
+}
+
+@function to_fixed($number, $digits: 2, $round: "round") {
+  $n: 1;
+
+  // $number must be a number
+  @if type-of($number) !=number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+
+  // $digits must be a unitless number
+  @if type-of($digits) !=number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+
+  @for $i from 1 through $digits {
+    $n: $n * 10;
+  }
+
+  @if $round== "round" {
+    @return round($number * $n) / $n;
+  } @else if $round== "ceil" {
+    @return ceil($number * $n) / $n;
+  } @else if $round== "floor" {
+    @return floor($number * $n) / $n;
+  } @else {
+    @warn '#{ $round } is undefined keyword.';
+    @return $number;
+  }
+}
+
+// mixin
+
+// breakpoints
+$breakpoints: (
+  "m": "screen and (min-width: 768px)",
+  "l": "screen and (min-width: 1200px)",
+  "x": "screen and (min-width: 1400px)",
+) !default;
+
+// breakpoint - min-width
+@mixin mq($breakpoint: m) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// フォントサイズをremに変換
+@mixin fs($size: 16, $default: 10) {
+  $rem: $size / $default;
+  $remsize: floor_decimal($rem);
+  font-size: $size + px;
+  font-size: $remsize + rem;
+}
+
+// webフォント
+@mixin gotham() {
+  font-family: "Gotham SSm A", "Gotham SSm B", "Noto Sans JP", sans-serif;
+}
+
+@mixin shelby() {
+  font-family: "shelby", sans-serif;
+}
+
+// vw系
+
+$bp1: 375;
+
+// font-size
+@mixin vwfs($size: 16, $windowWidth: $bp1) {
+  $vw: $size / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  font-size: $size + px;
+  font-size: $vwsize + vw;
+}
+
+// width
+@mixin vww($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  width: $width + px;
+  width: $vwsize + vw;
+}
+
+// height
+@mixin vwh($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  height: $width + px;
+  height: $vwsize + vw;
+}
+
+// margin
+@mixin vwm($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  margin: $vwsize + vw;
+}
+
+@mixin vwmt($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  margin-top: $vwsize + vw;
+}
+
+@mixin vwmb($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  margin-bottom: $vwsize + vw;
+}
+
+@mixin vwml($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  margin-left: $vwsize + vw;
+}
+
+@mixin vwmr($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  margin-right: $vwsize + vw;
+}
+
+@mixin vwmtb($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  margin-top: $vwsize + vw;
+  margin-bottom: $vwsize + vw;
+}
+
+@mixin vwmlr($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  margin-left: $vwsize + vw;
+  margin-right: $vwsize + vw;
+}
+
+// padding
+@mixin vwp($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  padding: $vwsize + vw;
+}
+
+@mixin vwpt($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  padding-top: $vwsize + vw;
+}
+
+@mixin vwpb($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  padding-bottom: $vwsize + vw;
+}
+
+@mixin vwpl($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  padding-left: $vwsize + vw;
+}
+
+@mixin vwpr($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  padding-right: $vwsize + vw;
+}
+
+@mixin vwptb($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  padding-top: $vwsize + vw;
+  padding-bottom: $vwsize + vw;
+}
+
+@mixin vwplr($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  padding-left: $vwsize + vw;
+  padding-right: $vwsize + vw;
+}
+
+// position
+@mixin vwt($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  top: $vwsize + vw;
+}
+
+@mixin vwb($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  bottom: $vwsize + vw;
+}
+
+@mixin vwl($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  left: $vwsize + vw;
+}
+
+@mixin vwr($width, $windowWidth: $bp1) {
+  $vw: $width / $windowWidth * 100;
+  $vwsize: cell_decimal($vw);
+  right: $vwsize + vw;
+}
+
+// letter-spacing
+@mixin ls($size) {
+  letter-spacing: $size / 1000 + em;
+}
+
+// line-height
+@mixin lh($fsize, $lheight) {
+  line-height: $lheight / $fsize;
+}

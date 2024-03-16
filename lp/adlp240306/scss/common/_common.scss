@@ -1,0 +1,594 @@
+@charset "UTF-8";
+
+@use 'config' as *;
+
+/* common
+---------------------------------------------------------------------------- */
+/* color */
+.color01{ color: $key_color !important;}
+.color02{ color: $key_color02 !important;}
+
+.bgcol{ background: $base_color;}
+
+.w-bold{ font-weight: 700;}
+.w-black{ font-weight: 900;}
+
+.letter-spacing0{
+	letter-spacing: 0 !important;
+}
+
+/* title */
+.c-title{
+	@include fz(32,48,50,700);
+	text-align: center;
+	box-sizing: border-box;
+	@include deviceSP {
+		@include fz(22,32,50,700);
+	}
+	&.-white{
+		color: $white;
+	}
+	.small{
+		position: relative;
+		top: .6rem;
+		margin-left: 1rem;
+		@include fz(27,48,50,700);
+		@include deviceSP {
+			@include fz(18,32,100,700);
+		}
+	}
+}
+.c-subtitle{
+	@include fz(40,32,0,400);
+	color: $key_color;
+	letter-spacing: 0;
+	margin-top: 2rem;
+	margin-bottom: 4rem;
+	text-align: center;
+	box-sizing: border-box;
+	@include deviceSP {
+		@include fz(32,32,0,400);
+		margin-top: 1.5rem;
+		margin-bottom: 2rem;
+	}
+	&.-white{
+		color: $white;
+	}
+	&.-gold{
+		color: $key_color02;
+	}
+}
+
+/* text */
+.c-text{
+	@include fz(16,30,0,400);
+	letter-spacing: 0;
+	@include deviceSP {
+		@include fz(14,24,0,400);
+	}
+	&.strong{
+		@include fz(18,30,0,700);
+		@include deviceSP {
+			@include fz(14,24,0,700);
+		}
+	}
+}
+
+/* hover */
+.c-hover{
+	@include devicePC {
+		display: block;
+		transition: opacity .4s;
+		&:hover{
+			text-decoration: none;
+			opacity: $opacity;
+			
+		}
+	}
+}
+
+/* button */
+.btn_wrap{
+	.c-button+.c-button{
+		margin-top: 1rem;
+		@include deviceSP {
+			margin-top: 0;
+		}
+	}
+}
+.c-button{
+	position: relative;
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-family: 'Noto Sans JP', sans-serif;
+	@include fz(20,20,100,700);
+	color: $white;
+	padding: 1.5rem 1rem;
+	border-radius: 1rem;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	cursor: pointer;
+	@include deviceSP {
+		@include fz(14,19,100,600);
+		padding: .8rem 1.2rem 1.2rem 1rem;
+	}
+	&.-red{
+		background: $key_color;
+		@include gradient(top, #FF816E, #D92A0F);
+		@include deviceSP {
+			border-radius: 1rem 0 0 1rem;
+		}
+	}
+	&.-black{
+		background: $base_color;
+	}
+	&.-gray{
+		color: $base_color;
+		background-image: linear-gradient(to bottom, #FFFFFF, #C7C7C7, #CCCCCC);
+		@include deviceSP {
+			border-radius: 0 1rem 1rem 0;
+		}
+		&.-arrow{
+			&:after{
+				@include arrow(1.0, 2, $base_color, right);
+				transform: rotate(-45deg) translateY(-50%);
+				@include deviceSP {
+					@include arrow(1.6, 2, $base_color, right);
+					transform: rotate(-45deg) translateY(-50%);
+				}
+			}
+		}
+	}
+	&.-arrow{
+		&:after{
+			position: absolute;
+			right: 2rem;
+			top: 50%;
+			display: block;
+			content: '';
+			@include arrow(1.0, 2, $white, right);
+			transform: rotate(-45deg) translateY(-50%);
+			
+			@include deviceSP {
+				right: 1.0rem;
+				@include arrow(1.6, 2, $white, right);
+				transform: rotate(-45deg) translateY(-50%);
+			}
+		}
+	}
+	.small{
+		display: block;
+		margin-top: .8rem;
+		@include fz(14,16,100,400);
+		@include deviceSP {
+			display: none;
+		}
+	}
+}
+
+/* line */
+.c-line{
+	display: inline-block;
+	background:linear-gradient(rgba(255,255,255,0) 70%, rgba(217,42,15,.12) 70%);
+	padding: 0 2rem;
+	@include deviceSP {
+		padding: 0 1.4rem;
+	}
+}
+
+/* table */
+.c-tbl{
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 3px solid #707070;
+	box-sizing: border-box;
+	@include deviceSP {
+		padding: 0 3rem !important;
+		border: none;
+		display: block;
+	}
+	@include deviceSP {
+		tbody{
+			@include flex(start, start, wrap, stretch);
+			gap: 0 2.4rem;
+		}
+		tr{
+			display: block;
+			width: calc((100% - 2.4rem) / 2);
+			&.sp-w100{
+				width: 100%;
+			}
+		}
+	}
+	th,td{
+		vertical-align: middle;
+		border-bottom: 1px solid #707070;
+		padding: 2.3rem 1rem;
+		box-sizing: border-box;
+		@include deviceSP {
+			display: block;
+			width: 100% !important;
+			padding: 1.5rem 0;
+		}
+
+	}
+	th{
+		width: 17.4rem;
+		text-align: center;
+		color: $key_color02;
+		@include fz(18,18,0,700);
+		letter-spacing: 0;
+		@include deviceSP {
+			width: 100%;
+			@include fz(16,16,0,700);
+			text-align: left;
+			padding: 1.5rem 0;
+		}
+	}
+	td{
+		width: calc(100% - 17.4rem);
+		color: $white;
+		@include fz(24,38,0,700);
+		letter-spacing: 0;
+		padding-left: 1rem;
+		box-sizing: border-box;
+		@include deviceSP {
+			width: 100%;
+			@include fz(20,34,0,700);
+			padding: .5rem 0 0 0;
+			border-bottom: none;
+		}
+	}
+}
+
+/* cta-wrap
+---------------------------------------------------------------------------- */
+.cta-wrap{
+	position: relative;
+	background: $base_color;
+	padding: 2rem 0;
+	box-sizing: border-box;
+	z-index: 2;
+	@include deviceSP {
+		padding: 1.2rem 0 1.7rem 0;
+	}
+	.flex{
+		@include flex(center, center, nowrap, stretch);
+		gap: 0 3.2rem;
+		@include deviceSP {
+			display: block;
+			padding: 0 1.6rem;
+		}
+		.cta-txt{
+			width: 52rem;
+			@include flex(start, center, nowrap, stretch);
+			gap: 0 0;
+			box-sizing: border-box;
+			@media screen and (min-width: 1280px) {
+				width: 46rem;
+			}
+			@include deviceSP {
+				width: 100%;
+				padding-right: 0;
+			}
+			.circle{
+				position: relative;
+				width: 16rem;
+				height: 16rem;
+				@include flex(center, center, nowrap, stretch);
+				flex-direction: column;
+				background: $key_color02;
+				border-radius: 100%;
+				padding-top: .8rem;
+				box-sizing: border-box;
+				z-index: 2;
+				@include deviceSP {
+					position: absolute;
+					right: 2rem;
+					top: -6.8rem;
+					width: 10.1rem;
+					height: 10.1rem;
+				}
+				.ttl{
+					text-align: center;
+					@include fz(16,16,100,700);
+					color: $base_color;
+					@include deviceSP {
+						@include fz(11,11,0,700);
+						letter-spacing: 0;
+					}
+					.num{
+						@include fz(29,29,100,700);
+						@include deviceSP {
+							@include fz(19,18,100,700);
+						}
+					}
+				}
+				.date-txt{
+					text-align: center;
+					border-top: 1px solid $base_color;
+					color: $base_color;
+					@include fz(25,34,100,700);
+					margin-top: 1rem;
+					padding-top: .5rem;
+					box-sizing: border-box;
+					@include deviceSP {
+						@include fz(16,20,100,700);
+						margin-top: .7rem;
+						padding-top: .2rem;
+					}
+					.date{
+						@include fz(19,19,100,700);
+						@include deviceSP {
+							@include fz(12,12,100,700);
+						}
+						.num{
+							@include fz(32,32,0,700);
+							letter-spacing: 0;
+							@include deviceSP {
+								@include fz(22,22,0,700);
+							}
+						}
+					}
+				}
+				
+			}
+			.txt_wrap{
+				width: calc(100% - 16rem);
+				padding-left: 1.2rem;
+				box-sizing: border-box;
+				@include deviceSP {
+					width: 100%;
+					@include flex(start, start, wrap, stretch);
+					padding-left: 0;
+				}
+				.ttl{
+					text-align: center;
+					color: $key_color02;
+					@include fz(16,26,50,700);
+					margin-bottom: -.3rem;
+					@include deviceSP {
+						width: 100%;
+						@include fz(18,22,50,700);
+						text-align: left;
+						padding-left: 1rem;
+						margin-bottom: 0;
+					}
+					span{
+						position: relative;
+						&:before,&:after{
+							position: relative;
+							top: -.1rem;
+							display: inline-block;
+							vertical-align: middle;
+							content: '';
+							width: 2px;
+							height: 2rem;
+							background: $key_color02;
+						}
+						&:before{
+							transform: rotate(-20deg);
+							margin-right: .8rem;
+						}
+						&:after{
+							transform: rotate(20deg);
+							margin-left: .8rem;
+						}
+					}
+				}
+				.txt_lead{
+					position: relative;
+					text-align: center;
+					color: $white;
+					@include fz(19,32,50,700);
+					padding-bottom: .4rem;
+					margin-bottom: .8rem;
+					@include deviceSP {
+						position: relative;
+						top: .9rem;
+						width: 35%;
+						@include flex(start, center, nowrap, stretch);
+						@include fz(15,21,50,700);
+						padding-bottom: 0;
+						margin-bottom: 0;
+					}
+					&:after{
+						position: absolute;
+						left: -30%;
+						bottom: -1px;
+						display: block;
+						content: '';
+						background: $white;
+						width: 130%;
+						height: 1px;
+						@include deviceSP {
+							display: none;
+						}
+					}
+					.num{
+						@include fz(50,50,0,700);
+						letter-spacing: 0;
+						margin: 0 .7rem;
+						@include deviceSP {
+							position: relative;
+							bottom: -.4rem;
+							@include fz(36,36,0,700);
+							margin: 0 0;
+						}
+					}
+					.percent{
+						@include fz(31,31,0,700);
+						margin-right: .3rem;
+						@include deviceSP {
+							@include fz(15,15,50,700);
+							margin-right: 0;
+							margin-left: .3rem;
+						}
+					}
+					.border_txt{
+						 margin-right: .5rem;
+					}
+					@include deviceSP {
+						.border_txt{
+							display: block;
+							-ms-writing-mode: tb-rl;
+							writing-mode: vertical-rl;
+							border: 1px solid $white;
+							@include fz(13,15,50,700);
+							margin-right: .5rem;
+							padding: .4rem;
+							box-sizing: border-box;
+						}
+						.price_txt{
+							display: block;
+							text-align: center;
+						}
+					}
+				}
+				.price_wrap{
+					@include flex(center, center, nowrap, stretch);
+					gap: 0 .5rem;
+					@include deviceSP {
+						width: 65%;
+						align-items: flex-end;
+						gap: 0 .4rem;
+						padding-left: .2rem;
+						box-sizing: border-box;
+					}
+					.price{
+						color: $key_color02;
+						@include fz(20,20,50,700);
+						@include deviceSP {
+							@include fz(16,16,50,700);
+						}
+						.num{
+							@include fz(57,57,0,700);
+							letter-spacing: 0;
+							margin-right: .3rem;
+							@include deviceSP {
+								@include fz(48,48,0,700);
+								margin-right: 0;
+							}
+						}
+						.tax{
+							display: block;
+							@include fz(12,12,50,400);
+							margin-top: .3rem;
+							margin-left: -1rem;
+							color: $white !important;
+							text-align: center;
+							margin-left: 0;
+							@include deviceSP {
+								@include fz(10,18,50,400);
+								margin-left: 0;
+								margin-top: 0;
+								text-align: left;
+							}
+						}
+						&.regular{
+							position: relative;
+							color: $white;
+							@include deviceSP {
+								@include fz(15,15,50,700);
+							}
+							.small{
+								@include fz(12,12,50,700);
+								@include deviceSP {
+									@include fz(10,10,50,700);
+								}
+							}
+							.num{
+								@include fz(41,41,0,700);
+								@include deviceSP {
+									@include fz(28,28,0,700);
+								}
+							}
+							.small_num{
+								@include fz(26,26,0,700);
+								@include deviceSP {
+									@include fz(20,20,0,700);
+								}
+							}
+							.tax{
+								text-align: left;
+								margin-left: -1rem;
+								@include deviceSP {
+									margin-left: -.8rem;
+								}
+							}
+						}
+					}
+					.arrow{
+						position: relative;
+						left: -.4rem;
+						display: inline-block;
+						vertical-align: middle;
+						width: 2.8rem;
+						height: .8rem;
+						border-bottom: 1px solid $white;
+						border-right: 2px solid $white;
+						transform: skew(45deg);
+						@include deviceSP {
+							top: -3.2rem;
+							left: -.2rem;
+							width: 1.6rem;
+							height: .5rem;
+						}
+					}
+				}
+			}
+		}
+		.btn_wrap{
+			width: 33.4rem;
+			@include deviceSP {
+				width: 100%;
+				margin-top: 1.5rem;
+				@include flex(center, center, nowrap, stretch);
+				.c-button{
+					width: 50%;
+				}
+				&.sp-fixed{
+					position: fixed;
+					left: 0;
+					bottom: 0;
+					width: 100%;
+					padding: 0 2rem;
+					box-sizing: border-box;
+					z-index: 998;
+					.c-button.-red{
+						border-radius: 1rem 0 0 0;
+					}
+					.c-button.-gray{
+						border-radius: 0 1rem 0 0;
+					}
+				}
+			}
+		}
+	}
+	@include deviceSP {
+		&.-first{
+			z-index: 998;
+		}
+	}
+}
+
+/* anime
+---------------------------------------------------------------------------- */
+.slideIn.delay1{ transition-delay: .2s !important;}
+.slideIn.delay2{ transition-delay: .4s !important;}
+.slideIn.delay3{ transition-delay: .6s !important;}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,135 @@
+@use "../global" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+@import url('https://cloud.typography.com/6684440/7875632/css/fonts.css');
+
+html {
+	font-size: 62.5%;
+	background: $bk;
+}
+@include deviceSP{
+	html {
+		font-size: 2.72vw;
+	}
+}
+body {
+	display: flex;
+	flex-flow: column;
+	min-height: 100vh;
+    font-family: 'Noto Sans JP', sans-serif;
+	font-size: 1.6rem;
+	line-height: 1.75;
+	font-weight: 400;
+	color: $font_base;
+    min-width: 1240px;
+}
+
+@include deviceSP {
+	body {
+		line-height: 1.714;
+		min-width: 1%;
+		position: relative;
+	}
+}
+
+.js-preload * {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
+img {
+	image-rendering: -webkit-optimize-contrast;
+    @include deviceSP{
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* mouseover
+--------------------------------------------------*/
+@include devicePC {
+	.over {
+		&:hover {
+			opacity: 0.6;
+			transition: opacity 0.3s;
+		}
+	}
+}
+
+label {
+	cursor: pointer;
+}
+
+/* main
+--------------------------------------------------*/
+
+.f-main{
+}
+
+/* link
+--------------------------------------------------*/
+a {
+	color: $font_base;
+	transition: $duration;
+	will-change: transform;
+	&:link,
+	&:active,
+	&:visited {
+		text-decoration: none;
+	}
+	&:focus {
+		text-decoration: none;
+	}
+	@media (hover: hover) and (pointer: fine) {
+		&:hover{
+			text-decoration: none;
+			opacity: $opacity;
+		}
+	}
+	@include deviceSP {
+		&:hover,
+		&:focus {
+			text-decoration: none;
+			opacity: 1;
+		}
+	}
+}
+a[href*="tel:"] {
+	pointer-events: none;
+	@include deviceSP {
+		pointer-events: all;
+	}
+}
+
+/* input
+--------------------------------------------------*/
+button {
+	color: $font_base;
+	transition: $duration;
+	will-change: transform;
+	&:hover {
+		opacity: $opacity;
+	}
+	&:focus {
+		text-decoration: none;
+	}
+	@include deviceSP {
+		&:hover,
+		&:focus {
+			opacity: 1;
+		}
+	}&:hover {
+		opacity: $opacity;
+	}
+	&:focus {
+		text-decoration: none;
+	}
+	@include deviceSP {
+		&:hover,
+		&:focus {
+			opacity: 1;
+		}
+	}
+}

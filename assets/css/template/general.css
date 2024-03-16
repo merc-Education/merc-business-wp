@@ -1,0 +1,200 @@
+body.page-template-general-template #header-wrapper,
+body.page-template-general-template #gnav,
+body.page-template-general-template #toc_container {
+  display: none;
+}
+
+body.page-template-general-template {
+  background: #fff;
+  color: #101010;
+  line-height: 1.75;
+}
+body.page-template-general-template .tpl-general__header {
+  padding: 30px 30px 23px;
+}
+body.page-template-general-template .tpl-general__inner {
+  max-width: 1250px;
+  padding: 80px 25px 190px;
+  margin: auto;
+}
+@media screen and (max-width: 767px) {
+  body.page-template-general-template .tpl-general__header {
+    padding: 20px 20px 5px;
+  }
+  body.page-template-general-template .tpl-general__header img {
+    width: 124px;
+  }
+  body.page-template-general-template .tpl-general__inner {
+    padding: 78px 25px 103px;
+  }
+}
+
+/* コンテンツスタイル */
+body.page-template-general-template .tpl-general__inner h1 {
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  margin-bottom: 117px;
+}
+body.page-template-general-template .tpl-general__inner h1 br {
+  display: none;
+}
+body.page-template-general-template .tpl-general__inner h2 {
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.45;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+body.page-template-general-template .terms-image img {
+  display: block;
+  width: 100% !important;
+  max-width: 638px;
+  margin: 30px auto 50px;
+}
+/* 第一階層 */
+body.page-template-general-template .tpl-general__inner > ol {
+  list-style: auto;
+  padding-left: 40px;
+}
+/* 第二階層 */
+body.page-template-general-template .tpl-general__inner > ol > li > ul {
+  list-style: disc;
+  padding-left: 23px;
+}
+body.page-template-general-template .tpl-general__inner > ol > li > ol {
+  padding-left: 15px;
+}
+body.page-template-general-template .tpl-general__inner > ol > li > ol > li {
+  list-style-type: none;
+  counter-increment: cnt;
+}
+body.page-template-general-template
+  .tpl-general__inner
+  > ol
+  > li
+  > ol
+  > li::before {
+  content: "(" counter(cnt) ") ";
+}
+/* 第三階層 */
+body.page-template-general-template
+  .tpl-general__inner
+  > ol
+  > li
+  > ol
+  > li
+  > ol,
+body.page-template-general-template
+  .tpl-general__inner
+  > ol
+  > li
+  > ol
+  > li
+  > ul {
+  padding-left: 20px;
+}
+body.page-template-general-template
+  .tpl-general__inner
+  > ol
+  > li
+  > ol
+  > li
+  > ol
+  > li {
+  counter-increment: item;
+}
+body.page-template-general-template
+  .tpl-general__inner
+  > ol
+  > li
+  > ol
+  > li
+  > ol
+  > li::before {
+  content: "( " counter(item, lower-roman) " ) ";
+}
+body.page-template-general-template .tpl-general__inner p.spacer {
+  margin-bottom: 52px;
+}
+@media screen and (max-width: 767px) {
+  body.page-template-general-template .tpl-general__inner h1 {
+    font-size: 22px;
+    margin-bottom: 93px;
+  }
+  body.page-template-general-template .tpl-general__inner h1 br {
+    display: block;
+  }
+  body.page-template-general-template .tpl-general__inner h2 {
+    font-size: 18px;
+    line-height: 1.77;
+  }
+  body.page-template-general-template .tpl-general__inner p,
+  body.page-template-general-template .tpl-general__inner li {
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 0.05em;
+  }
+  body.page-template-general-template .tpl-general__inner > ol {
+    padding-left: 30px;
+  }
+  body.page-template-general-template .terms-image img {
+    margin-bottom: 30px;
+  }
+}
+
+/* テーブルスタイル */
+body.page-template-general-template .tpl-general__inner .wp-block-table tr {
+  background: #fff;
+  border-bottom: 1px solid rgba(16, 16, 16, 0.2);
+}
+body.page-template-general-template .tpl-general__inner .wp-block-table td {
+  background: #fff;
+  border: none;
+  padding: 10px 0;
+}
+body.page-template-general-template
+  .tpl-general__inner
+  .wp-block-table
+  td:first-child {
+  font-weight: bold;
+  min-width: 224px;
+}
+body.page-template-general-template
+  .tpl-general__inner
+  .wp-block-table
+  td:nth-child(2) {
+  padding-left: 36px;
+}
+@media screen and (max-width: 767px) {
+  body.page-template-general-template .tpl-general__inner .wp-block-table tr {
+    display: block;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  body.page-template-general-template
+    .tpl-general__inner
+    .wp-block-table
+    tr:last-child {
+    border: none;
+  }
+  body.page-template-general-template .tpl-general__inner .wp-block-table td {
+    display: block;
+    padding: 0;
+  }
+  body.page-template-general-template
+    .tpl-general__inner
+    .wp-block-table
+    td:first-child {
+    min-width: 0;
+    letter-spacing: 0.1em;
+  }
+  body.page-template-general-template
+    .tpl-general__inner
+    .wp-block-table
+    td:nth-child(2) {
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    padding-left: 0;
+  }
+}

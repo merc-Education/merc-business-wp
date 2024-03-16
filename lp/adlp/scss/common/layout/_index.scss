@@ -1,0 +1,7 @@
+@use "../config" as *;
+
+@forward "body";
+
+@forward "header";
+
+@forward "footer";

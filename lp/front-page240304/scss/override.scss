@@ -1,0 +1,3084 @@
+@import "_mixin", "_settings";
+@import "slick";
+
+$mw: 1400;
+$full: 1920;
+
+.gt {
+  @include gotham();
+}
+
+.pc-inline {
+  display: none;
+
+  @include mq() {
+    display: inline-block;
+  }
+}
+
+.sp-inline {
+  display: inline-block;
+
+  @include mq() {
+    display: none;
+  }
+}
+
+br {
+  &.bsp {
+    display: inline-block;
+
+    @include mq() {
+      display: none;
+    }
+  }
+
+  &.nbsp {
+    display: none;
+
+    @include mq() {
+      display: inline-block;
+    }
+  }
+}
+
+#mv {
+  .image {
+    @include mq() {
+      $w: 800 / $full * $mw;
+      $h: 640 / $full * $mw;
+      width: $w + px;
+      height: $h + px;
+      border-radius: 50px 0 0 50px;
+      overflow: hidden;
+    }
+
+    @include mq(l) {
+      @include vww(800, $full);
+      @include vwh(640, $full);
+    }
+
+    picture {
+      display: block;
+      height: 100%;
+
+      source,
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .subsidy {
+    margin-top: 20px;
+
+    @include mq() {
+      margin-top: 30px;
+      $w: 720 / $full * $mw;
+      width: $w + px;
+    }
+
+    @include mq(l) {
+      @include vww(720, $full);
+    }
+  }
+
+  .catch {
+    @include mq() {
+    }
+
+    @include mq(l) {
+      @include vww(733, $full);
+    }
+  }
+
+  .skill {
+    margin-top: 0;
+  }
+
+  .review {
+    $w: 720 / $full * $mw;
+    @include vwmt(25);
+
+    @include mq() {
+      margin-left: 0;
+      width: $w + px;
+      margin-top: 42px;
+    }
+
+    @include mq(l) {
+      @include vww(720, $full);
+    }
+
+    > img {
+      @include vwmt(20);
+
+      @include mq() {
+        margin-top: 0;
+        $w: 470 / $full * $mw;
+        $ml: 126 / $full * $mw;
+        width: $w + px;
+        margin-left: $ml + px;
+      }
+
+      @include mq(l) {
+        @include vww(470, $full);
+        @include vwml(126, $full);
+      }
+    }
+
+    .att {
+      width: 100%;
+      text-align: center;
+      @include vwfs(7.5);
+
+      @include mq() {
+        @include fs(12);
+      }
+    }
+  }
+}
+
+.skill {
+  &-title {
+    @include vwfs(16);
+    font-weight: 700;
+    text-align: center;
+
+    @include mq() {
+      @include fs(22);
+    }
+  }
+
+  &-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    @include vwfs(12);
+    font-weight: 700;
+    width: calc(100% + 4.266666666vw);
+    margin-left: -2.1333333333vw;
+    @include vwmt(4);
+
+    @include mq() {
+      margin-top: 15px;
+    }
+
+    li {
+      @include vwmt(8);
+      @include vwmlr(8);
+      background: $dark;
+      color: $white;
+      @include vwp(6);
+      line-height: 1;
+      border-radius: 5px;
+
+      @include mq() {
+        margin: 0 5px;
+        padding: 10px 24px;
+        @include fs(14);
+      }
+    }
+  }
+}
+
+.cta {
+  &-title {
+    text-align: center;
+    @include vwfs(22);
+    @include ls(50);
+    line-height: 2;
+    font-weight: 700;
+
+    @include mq() {
+      line-height: 1.5;
+      @include fs(28);
+      margin-top: 20px;
+    }
+
+    .top,
+    .bottom {
+      display: inline-block;
+    }
+
+    .bottom {
+      color: $red;
+
+      .red-box {
+        color: $white;
+        background: $red;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 0 10px 2px;
+        font-size: 0.9em;
+
+        @include mq() {
+          padding: 2px 16px 4px;
+          transform: translateY(-1px);
+        }
+      }
+
+      .num {
+        @include vwfs(34);
+
+        @include mq() {
+          @include fs(51);
+        }
+      }
+
+      .small {
+        @include vwfs(21);
+
+        @include mq() {
+          @include fs(31);
+        }
+      }
+    }
+  }
+}
+
+#schedule {
+  .ttl {
+    flex-wrap: wrap;
+
+    @include mq() {
+      flex-wrap: nowrap;
+    }
+
+    .start {
+      width: 100%;
+      @include vwmb(15);
+
+      @include mq() {
+        width: auto;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 10px;
+      }
+
+      img {
+        display: block;
+        margin: 0 auto;
+        @include vww(240);
+
+        @include mq() {
+          width: 240px;
+        }
+      }
+    }
+  }
+}
+
+.app_box {
+  .ttl {
+    .bg {
+      border-radius: 5px;
+      padding: 0 10px 2px;
+      font-size: 0.9em;
+
+      @include mq() {
+        padding: 2px 16px 4px;
+        transform: translateY(-1px);
+        margin: 0 16px;
+      }
+    }
+  }
+}
+
+#schedule .list.c-schedule__list {
+  @include vww(308);
+  margin: 0 auto;
+  left: 0 !important;
+
+  @include mq() {
+    width: auto;
+    margin: 0;
+  }
+
+  li {
+    font-size: 13.5px !important;
+    font-size: 3.6vw !important;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+
+    @include mq() {
+      font-size: 18px !important;
+      font-size: 1.8rem !important;
+    }
+
+    span {
+      width: 154px !important;
+      width: 41.0666666667vw !important;
+      font-size: 13.5px !important;
+      font-size: 3.6vw !important;
+      font-weight: 700;
+      @include vwpr(14);
+      @include vwmr(10);
+      box-sizing: border-box;
+      flex: 0 0 auto;
+
+      @include mq() {
+        width: 196px !important;
+        font-size: 18px !important;
+        font-size: 1.8rem !important;
+        padding-right: 16px;
+        margin-right: 16px;
+      }
+    }
+  }
+
+  &:nth-of-type(2) {
+    li span {
+      @include mq() {
+        width: 64px !important;
+      }
+    }
+  }
+
+  &:nth-of-type(3) {
+    li span {
+      @include mq() {
+        width: 75px !important;
+      }
+    }
+  }
+}
+
+.careerup {
+  background: $yellow;
+  padding: 25px 0;
+
+  @include mq() {
+    padding: 80px 0;
+  }
+
+  &-inner {
+    background: $white;
+    border-radius: 20px;
+    padding: 25px;
+
+    @include mq() {
+      padding: 40px 50px;
+    }
+  }
+
+  &-top {
+    @include mq() {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-ttl {
+    @include vwfs(20);
+    @include lh(20, 30);
+    @include ls(50);
+    font-weight: 700;
+    text-align: center;
+
+    @include mq() {
+      @include fs(28);
+      text-align: left;
+    }
+
+    &-wrap {
+      @include mq() {
+        margin-left: 92px;
+      }
+    }
+  }
+
+  &-logo {
+    @include vww(182);
+    margin: 10px auto;
+
+    @include mq() {
+      width: 207px;
+      margin: 0;
+      flex: 0 0 auto;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &-read {
+    @include vwfs(16);
+    @include lh(16, 26);
+    @include ls(50);
+    font-weight: 700;
+    text-align: center;
+
+    @include mq() {
+      @include fs(20);
+      margin-top: 12px;
+      text-align: left;
+    }
+  }
+
+  &-img {
+    &-01 {
+      margin-top: 20px;
+
+      @include mq() {
+        margin-top: 38px;
+        width: 100%;
+      }
+
+      img {
+        display: block;
+        @include vww(227);
+        height: auto;
+        margin: 0 auto;
+
+        @include mq() {
+          width: 100%;
+        }
+      }
+
+      .att {
+        @include vwfs(10);
+        @include lh(10, 15);
+        margin-top: 10px;
+
+        @include mq() {
+          @include fs(14);
+          margin-top: 32px;
+        }
+      }
+    }
+  }
+
+  &-btn {
+    width: 100%;
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+
+    &-wrap {
+      margin-top: 15px;
+
+      @include mq() {
+        margin-top: 40px;
+      }
+    }
+
+    &-icon {
+      display: block;
+      position: absolute;
+      top: 50%;
+      @include vwr(20);
+      transform: translateY(-50%);
+      @include vww(20);
+      @include vwh(20);
+
+      @include mq() {
+        width: 20px;
+        height: 20px;
+        right: 26px;
+      }
+
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 2px;
+        background: $white;
+
+        &:nth-of-type(2) {
+          transform: translate(-50%, -50%) rotate(90deg);
+          transition: 0.3s ease;
+        }
+      }
+    }
+
+    &.active {
+      .careerup-btn-icon {
+        span {
+          &:nth-of-type(2) {
+            transform: translate(-50%, -50%) rotate(0deg);
+          }
+        }
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(2px 5px 8px rgba($black, 0.2));
+    }
+  }
+
+  &-body {
+    @include vwpb(15);
+
+    @include mq() {
+      padding-bottom: 50px;
+    }
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+
+    @include mq() {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .ttl {
+      @include ls(50);
+      @include lh(20, 28);
+      @include vwfs(20);
+      font-weight: 700;
+      text-align: center;
+      position: relative;
+      @include vwmb(30);
+      @include vwpb(30);
+      @include vwpt(60);
+
+      @include mq() {
+        @include fs(24);
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        padding-top: 80px;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        @include vww(40);
+        left: 50%;
+        transform: translateX(-50%);
+        height: 2px;
+        background: $dark-line;
+
+        @include mq() {
+          width: 40px;
+        }
+      }
+    }
+
+    .txt {
+      @include vwfs(16);
+      @include lh(16, 28);
+
+      + .txt {
+        margin-top: 1.5em;
+      }
+
+      @include mq() {
+        @include fs(16);
+      }
+    }
+
+    .txtlink {
+      color: $textlink;
+      text-decoration: underline;
+
+      &:hover,
+      &:focus-visible {
+        text-decoration: underline;
+        opacity: 1;
+        color: lighten($textlink, 30%);
+      }
+    }
+
+    .img {
+      &-01 {
+        @include vwmt(28);
+        text-align: center;
+
+        @include mq() {
+          margin-top: 40px;
+        }
+      }
+
+      &-02 {
+        text-align: center;
+        border: 2px solid $red;
+        border-radius: 20px;
+        @include vwmt(32);
+        @include vwplr(18);
+        @include vwptb(25);
+
+        @include mq() {
+          margin-top: 55px;
+          padding: 50px 88px;
+        }
+
+        ol {
+          @include vwmb(20);
+          @include vwmt(26);
+          text-align: left;
+
+          @include mq() {
+            margin-top: 35px;
+            margin-bottom: 20px;
+          }
+
+          li {
+            position: relative;
+            padding-left: 1.5em;
+            @include vwfs(16);
+            @include lh(16, 28);
+
+            @include mq() {
+              @include fs(16);
+            }
+
+            &::before {
+              position: absolute;
+              left: 0;
+            }
+
+            &:nth-of-type(1) {
+              &::before {
+                content: "\02460";
+              }
+            }
+
+            &:nth-of-type(2) {
+              &::before {
+                content: "\02461";
+              }
+            }
+          }
+
+          + .att {
+            @include lh(12, 18);
+            @include vwfs(12);
+            text-align: left;
+
+            @include mq() {
+              @include fs(14);
+            }
+          }
+        }
+      }
+
+      &-03 {
+        @include vwmt(25);
+
+        @include mq() {
+          margin-top: 40px;
+        }
+      }
+    }
+
+    .list {
+      @include lh(16, 28);
+      @include vwfs(16);
+
+      @include mq() {
+        @include fs(16);
+      }
+
+      li {
+        &::before {
+          content: "・";
+        }
+      }
+
+      + .att {
+        @include vwmt(30);
+        @include lh(12, 18);
+        @include vwfs(12);
+
+        @include mq() {
+          @include fs(14);
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+/* 20240304 - override */
+.red {
+  color: $red;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.mod {
+  &-link {
+    text-decoration: underline;
+  }
+
+  &-schedule {
+    border-top: thin solid $dark-line;
+    @include vwmt(24);
+    @include vwpt(16);
+
+    @include mq() {
+      margin-top: 24px;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    &-ttl {
+      @include vwfs(16);
+      @include vwmb(10);
+      font-weight: 700;
+    }
+
+    &-wrapper {
+      border: thin solid $dark;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    &-toggle {
+      width: 100%;
+      @include vwh(40);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      position: relative;
+
+      @include mq() {
+        height: 60px;
+      }
+
+      &-txt {
+        @include vwfs(14);
+        font-weight: 700;
+        color: $dark;
+
+        @include mq() {
+          @include fs(20);
+        }
+      }
+
+      &-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 12px;
+        @include vww(14);
+        @include vwh(14);
+        display: block;
+
+        @include mq() {
+          right: 20px;
+          width: 20px;
+          height: 20px;
+        }
+
+        span {
+          position: absolute;
+          top: calc(50% - 1px);
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: $dark;
+
+          &:nth-of-type(2) {
+            transform: rotate(90deg);
+            transition: 0.3s ease;
+          }
+        }
+      }
+
+      &.active {
+        .mod-schedule-toggle-icon {
+          span {
+            &:nth-of-type(2) {
+              transform: rotate(0deg);
+            }
+          }
+        }
+      }
+    }
+
+    &-box {
+      &[aria-hidden="true"] {
+        display: none;
+      }
+
+      &-in {
+        @include vwplr(34);
+        @include vwpt(18);
+        @include vwpb(20);
+
+        @include mq() {
+          padding: 28px 40px;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+
+    &-list {
+      &:nth-of-type(1) {
+        @include mq() {
+          margin-left: -100px;
+        }
+      }
+
+      &:nth-of-type(n + 2) {
+        @include mq() {
+          border-left: thin solid $dark-line;
+          margin-left: 26px;
+          padding-left: 8px;
+        }
+      }
+    }
+
+    &-item {
+      font-weight: 500;
+      display: flex;
+      justify-content: flex-end;
+      @include lh(14, 23);
+      @include vwfs(14);
+
+      @include mq() {
+        @include fs(16);
+      }
+
+      .ttl {
+        @include vww(84);
+        flex: 0 0 auto;
+        text-align: right;
+
+        @include mq() {
+          width: auto;
+          min-width: 96px;
+        }
+      }
+
+      .date {
+        @include vww(160);
+        flex: 0 0 auto;
+        text-align: right;
+        @include ls(50);
+
+        @include mq() {
+          width: 184px;
+        }
+      }
+    }
+  }
+}
+
+.cta {
+  &-price-box {
+    @include vwmt(20);
+    @include vwmb(30);
+    @include vwpb(12);
+    text-align: center;
+    border-bottom: thin solid $dark-line;
+
+    @include mq() {
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-top: 18px;
+      margin-bottom: 32px;
+    }
+
+    picture {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      max-width: 574px;
+    }
+
+    &-caption {
+      @include vwfs(12);
+      @include vwmt(10);
+
+      @include mq() {
+        @include fs(12);
+        margin-top: 18px;
+      }
+    }
+  }
+}
+
+// about
+#about {
+  .ttl {
+    @include lh(20, 32);
+    @include vwfs(20);
+    color: $white;
+    position: relative;
+    @include vwpt(25);
+    @include vwpb(40);
+    font-weight: 700;
+
+    @include mq() {
+      @include lh(28, 50);
+      @include fs(28);
+      padding-top: 0;
+      padding-bottom: 30px;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      @include vww(38);
+      @include vwh(25);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include mq() {
+        width: 68px;
+        height: 45px;
+      }
+    }
+
+    &::before {
+      background-image: url("../img/pre-start.svg");
+      top: 0;
+      left: 0;
+    }
+
+    &::after {
+      background-image: url("../img/pre-end.svg");
+      bottom: 0;
+      right: 0;
+    }
+
+    .large,
+    .yellow {
+      @include vwfs(26);
+
+      @include mq() {
+        @include fs(36);
+      }
+    }
+
+    .yellow {
+      color: $yellow;
+    }
+
+    &-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+
+      .logo {
+        @include vww(280);
+        @include vwmr(10);
+        transform: translateY(1.66666667vw);
+
+        @include mq() {
+          width: 358px;
+          transform: translateY(7px);
+          margin-right: 14px;
+        }
+      }
+    }
+
+    &-bottom {
+      display: block;
+      @include vwmt(14);
+
+      @include mq() {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .cc {
+    position: relative;
+    text-align: center;
+    color: $white;
+    @include vwptb(20);
+    font-weight: 700;
+
+    @include mq() {
+      padding: 0;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      @include vww(40);
+      @include vwh(40);
+
+      @include mq() {
+        content: none;
+      }
+    }
+
+    &::before {
+      top: 0;
+      left: 0;
+      border-top: thin solid $white;
+      border-left: thin solid $white;
+    }
+
+    &::after {
+      bottom: 0;
+      right: 0;
+      border-bottom: thin solid $white;
+      border-right: thin solid $white;
+    }
+
+    &-num {
+      display: block;
+      @include ls(-50);
+      position: relative;
+
+      @include mq() {
+        display: flex;
+        align-items: baseline;
+        padding: 20px 28px 20px 40px;
+      }
+
+      .num {
+        @include vwfs(90);
+
+        @include mq() {
+          @include fs(100);
+        }
+      }
+
+      .per {
+        @include vwfs(50);
+
+        @include mq() {
+          @include fs(54);
+        }
+      }
+
+      &::before,
+      &::after {
+        @include mq() {
+          content: "";
+          display: block;
+          position: absolute;
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      &::before {
+        top: 0;
+        left: 0;
+        border-top: thin solid $white;
+        border-left: thin solid $white;
+      }
+
+      &::after {
+        bottom: 0;
+        right: 0;
+        border-bottom: thin solid $white;
+        border-right: thin solid $white;
+      }
+    }
+
+    &-txt {
+      display: block;
+      @include vwfs(16);
+      @include lh(20, 30);
+      @include vwmt(10);
+
+      @include mq() {
+        @include fs(24);
+        margin-top: 0;
+        margin-left: 20px;
+        transform: translateY(16px);
+      }
+
+      .yellow {
+        color: $yellow;
+        @include vwfs(20);
+
+        @include mq() {
+          @include fs(28);
+        }
+      }
+    }
+  }
+
+  .res {
+    @include vwmt(38);
+
+    @include mq() {
+      margin-top: 50px;
+    }
+
+    &-ttl {
+      font-weight: 700;
+      @include vwfs(18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      @include vwh(48);
+      background: $white;
+      border-radius: 100px;
+      color: $gray;
+      position: relative;
+
+      @include mq() {
+        height: 48px;
+        width: 345px;
+        margin: 0 auto;
+        @include fs(20);
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 39%;
+        border-style: solid;
+        border-width: 0 5.6vw 4.26666667vw 5.6vw;
+        border-color: transparent transparent #ffffff transparent;
+        transform: rotate(-34deg);
+        @include vwmt(-6);
+
+        @include mq() {
+          border-width: 0 21px 15px 21px;
+          margin-top: -8px;
+          left: 42%;
+        }
+      }
+    }
+
+    &-txt {
+      color: $white;
+      @include vwfs(18);
+      @include lh(18, 32);
+      font-weight: 700;
+      @include vwmt(20);
+      display: flex;
+      justify-content: center;
+
+      @include mq() {
+        margin-top: 30px;
+        @include fs(20);
+      }
+
+      .underline {
+        background: linear-gradient(transparent 94%, $yellow 0%);
+        padding-bottom: 3px;
+      }
+    }
+  }
+}
+
+// section
+.section {
+  &-ttl {
+    text-align: center;
+    font-weight: 700;
+
+    .top {
+      display: block;
+      text-align: center;
+      @include vwfs(14);
+      @include vwmb(14);
+
+      @include mq() {
+        @include fs(20);
+        margin-bottom: 16px;
+      }
+    }
+
+    .bottom {
+      @include vwfs(24);
+      @include lh(24, 32);
+
+      @include mq() {
+        @include fs(36);
+      }
+    }
+  }
+}
+
+// students
+.st {
+  @include vwpt(70);
+  @include vwpb(50);
+  background: $st-bg;
+
+  @include mq() {
+    padding-top: 120px;
+    padding-bottom: 50px;
+  }
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    @include vwmt(40);
+
+    @include mq() {
+      justify-content: center;
+      margin-top: 60px;
+    }
+
+    &-item {
+      width: calc((100% - 3.4666666667vw) / 2);
+      @include vwh(40);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $st-list-bg;
+      color: $white;
+      font-weight: 700;
+      @include vwfs(18);
+      border-radius: 200px;
+      overflow: hidden;
+
+      @include mq() {
+        width: 234px;
+        height: 60px;
+        @include fs(24);
+      }
+
+      &:nth-of-type(even) {
+        @include vwml(13);
+
+        @include mq() {
+          margin-left: 0;
+        }
+      }
+
+      &:nth-of-type(n + 3) {
+        @include vwmt(18);
+
+        @include mq() {
+          margin-top: 0;
+        }
+      }
+
+      &:nth-of-type(n + 2) {
+        @include mq() {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+
+  &-catch {
+    color: $st-list-bg;
+    text-align: center;
+    @include vwfs(16);
+    @include lh(16, 24);
+    @include vwmt(20);
+    font-weight: 700;
+
+    @include mq() {
+      @include fs(20);
+      margin-top: 24px;
+    }
+  }
+
+  &-arrow {
+    @include vww(244);
+    margin-left: auto;
+    margin-right: auto;
+    @include vwmt(20);
+    @include vwmb(14);
+
+    @include mq() {
+      width: 386px;
+      margin-top: 20px;
+      margin-bottom: 14px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &-subttl {
+    text-align: center;
+    @include vwfs(24);
+    @include lh(24, 32);
+    font-weight: 700;
+
+    @include mq() {
+      @include fs(36);
+    }
+
+    .logo {
+      @include vww(300);
+
+      @include mq() {
+        width: 402px;
+        transform: translateY(8px);
+        margin-right: 0.2em;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+
+  &-images {
+    display: flex;
+    flex-direction: column;
+    max-width: 920px;
+    margin: 0 auto;
+    @include vwmt(38);
+
+    @include mq() {
+      flex-direction: row;
+      margin-top: 38px;
+    }
+
+    &-item {
+      position: relative;
+
+      &:nth-of-type(1) {
+        @include vwh(282);
+
+        @include mq() {
+          height: 390px;
+        }
+      }
+
+      &:nth-of-type(2) {
+        @include vwh(304);
+
+        @include mq() {
+          height: 390px;
+        }
+      }
+
+      @include mq() {
+        width: 430px;
+      }
+
+      &:nth-of-type(n + 2) {
+        @include vwmt(40);
+
+        @include mq() {
+          margin-top: 0;
+          margin-left: 60px;
+        }
+      }
+
+      &-ttl,
+      &-label {
+        position: relative;
+        z-index: 2;
+      }
+
+      &-ttl,
+      &-label-in {
+        display: inline-block;
+        border-radius: 22px;
+        @include vwfs(16);
+        font-weight: 700;
+        @include vwptb(6);
+        @include vwplr(16);
+        @include lh(20, 26);
+
+        @include mq() {
+          @include fs(20);
+          padding: 8px 21px 10px;
+        }
+      }
+
+      &-ttl {
+        background: $st-list-bg;
+        color: $white;
+      }
+
+      &-label {
+        @include vwmt(5);
+
+        @include mq() {
+          margin-top: 5px;
+        }
+        &-in {
+          display: inline-block;
+          background: $white;
+          border: thin solid $st-list-bg;
+          color: $st-list-bg;
+
+          @include mq() {
+            border-width: 2px;
+          }
+        }
+      }
+
+      &-thumb {
+        position: absolute;
+        @include vwt(62);
+        right: 0;
+        @include vww(310);
+        @include vwh(150);
+        z-index: 1;
+        border-radius: 10px;
+        overflow: hidden;
+
+        @include mq() {
+          top: 21px;
+          width: 400px;
+          height: 240px;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &-txt {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        @include vwpt(35);
+        @include vwplr(15);
+        @include vwpb(17);
+        @include vwfs(14);
+        @include lh(14, 22);
+        border-radius: 10px;
+        background: $white;
+        @include vww(315);
+
+        @include mq() {
+          padding: 60px 28px 0;
+          width: 400px;
+          height: 170px;
+          @include fs(18);
+          @include lh(18, 28);
+        }
+      }
+    }
+  }
+
+  &-link {
+    border-radius: 100px;
+    @include vww(270);
+    @include vwh(38);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $gray;
+    color: $white;
+    @include vwfs(14);
+    font-weight: 700;
+
+    @include mq() {
+      width: 276px;
+      height: 44px;
+      @include fs(18);
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      background-image: url("../img/st-arrow-down.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: translateY(-18%);
+      @include vwml(16);
+      @include vww(18);
+      @include vwh(18);
+
+      @include mq() {
+        width: 18px;
+        height: 18px;
+        margin-left: 16px;
+      }
+    }
+
+    &-wrap {
+      @include vwmt(42);
+      display: flex;
+      justify-content: center;
+
+      @include mq() {
+        margin-top: 48px;
+      }
+    }
+  }
+}
+
+// points
+.points {
+  @include vwpt(80);
+  @include vwpb(100);
+
+  @include mq() {
+    padding-top: 120px;
+    padding-bottom: 200px;
+  }
+
+  &-ttl {
+    text-align: center;
+    @include vww(302);
+    margin: 0 auto;
+
+    @include mq() {
+      width: 710px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+}
+
+// point
+.point {
+  @include vwpt(100);
+
+  @include mq() {
+    padding-top: 200px;
+  }
+
+  &:nth-of-type(1) {
+    @include vwpt(30);
+
+    @include mq() {
+      padding-top: 100px;
+    }
+  }
+
+  &-ttl {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid $red;
+    @include vwpb(10);
+
+    @include mq() {
+      flex-direction: row;
+      position: relative;
+      padding-bottom: 36px;
+    }
+
+    &.ttl-01 {
+      @include mq() {
+        padding-bottom: 36px;
+      }
+    }
+
+    &.ttl-02,
+    &.ttl-03 {
+      @include mq() {
+        padding-bottom: 22px;
+      }
+    }
+
+    .num {
+      @include vww(54);
+
+      @include mq() {
+        width: 104px;
+        position: absolute;
+        left: 0;
+      }
+
+      &.num-01 {
+        @include mq() {
+          bottom: 20px;
+        }
+      }
+
+      &.num-02,
+      &.num-03 {
+        @include mq() {
+          bottom: 22px;
+        }
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .txt {
+      @include vwfs(20);
+      @include lh(20, 28);
+      font-weight: 700;
+      text-align: center;
+      @include vwmt(10);
+
+      @include mq() {
+        margin-top: 0;
+        @include fs(32);
+      }
+    }
+
+    + .point-txt {
+      @include vwmt(10);
+
+      @include mq() {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &-txt {
+    @include lh(14, 22);
+    @include vwfs(14);
+
+    @include mq() {
+      @include fs(16);
+      @include lh(16, 32);
+    }
+
+    &.point-read {
+      @include mq() {
+        text-align: center;
+      }
+    }
+  }
+
+  &-2col-a {
+    @include vwmt(28);
+
+    @include mq() {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+    }
+
+    + .point-2col-a {
+      @include vwmt(30);
+
+      @include mq() {
+        margin-top: 60px;
+      }
+    }
+
+    &-img,
+    &-txtbox {
+      @include mq() {
+        flex: 0 0 auto;
+        width: calc((100% - 40px) / 2);
+      }
+
+      &:last-of-type {
+        @include vwmt(12);
+
+        @include mq() {
+          margin-top: 0;
+        }
+      }
+
+      &.order-1 {
+        @include mq() {
+          order: 1;
+        }
+      }
+
+      &.order-2 {
+        @include mq() {
+          order: 2;
+          margin-left: 40px;
+        }
+      }
+    }
+
+    &-img {
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &-txt {
+      @include vwfs(14);
+      @include lh(14, 22);
+
+      @include mq() {
+        @include fs(18);
+        @include lh(18, 36);
+      }
+    }
+
+    &-ttl {
+      @include vwfs(18);
+      font-weight: 700;
+
+      @include mq() {
+        @include fs(18);
+      }
+
+      .small {
+        @include vwfs(14);
+
+        @include mq() {
+          @include fs(14);
+        }
+      }
+    }
+
+    &-list {
+      @include vwmt(4);
+
+      @include mq() {
+        margin-top: 10px;
+      }
+
+      &-item {
+        @include vwptb(10);
+
+        @include mq() {
+          padding: 20px 0;
+        }
+
+        &:nth-of-type(n + 2) {
+          border-top: thin solid $c-border;
+        }
+      }
+
+      &-ttl {
+        font-weight: 700;
+        background: $st-bg;
+        border: thin solid $c0;
+        @include vwmb(10);
+        @include vwpt(7);
+        @include vwpb(8);
+        @include vwplr(10);
+
+        @include mq() {
+          @include fs(16);
+          padding: 8px 14px 9px;
+          margin-bottom: 20px;
+        }
+      }
+
+      &-txt {
+        @include lh(16, 24);
+
+        @include mq() {
+          @include fs(16);
+        }
+
+        + .point-2col-a-list-ttl {
+          @include vwmt(30);
+
+          @include mq() {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  &-2col {
+    display: flex;
+    flex-wrap: wrap;
+    @include vwplr(24);
+    @include vwmt(30);
+
+    @include mq() {
+      padding: 0;
+      margin-top: 60px;
+    }
+
+    &-item {
+      width: 100%;
+
+      @include mq() {
+        flex: 0 0 auto;
+        width: calc((100% - 40px) / 2);
+      }
+
+      &:nth-of-type(n + 2) {
+        @include vwmt(20);
+
+        @include mq() {
+          margin-top: 0;
+        }
+      }
+
+      &:nth-of-type(even) {
+        @include mq() {
+          margin-left: 40px;
+        }
+      }
+
+      &:nth-of-type(n + 3) {
+        @include mq() {
+          margin-top: 60px;
+        }
+      }
+
+      &-ttl {
+        display: inline-block;
+        @include vww(82);
+        @include vwh(30);
+        border-radius: 5px 5px 0 0;
+        background: $st-list-bg;
+        color: $white;
+        font-weight: 700;
+        @include vwfs(14);
+        @include ls(10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include mq() {
+          width: 96px;
+          height: 36px;
+          @include ls(100);
+          @include fs(16);
+        }
+      }
+
+      &-txt {
+        @include vwfs(12);
+        @include lh(12, 18);
+        @include vwmt(5);
+
+        @include mq() {
+          @include fs(16);
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+}
+
+// charts
+.charts {
+  @include vwpt(36);
+
+  @include mq() {
+    display: flex;
+    padding-top: 68px;
+  }
+}
+
+// chart
+.chart {
+  @include mq() {
+    width: calc((100% - 80px) / 2);
+    flex: 0 0 auto;
+  }
+
+  &:nth-of-type(2) {
+    @include vwmt(50);
+
+    @include mq() {
+      margin-top: 0;
+      margin-left: 80px;
+    }
+  }
+
+  &-ttl {
+    text-align: center;
+    font-weight: 700;
+    @include vwfs(20);
+    @include vwmb(30);
+
+    @include mq() {
+      @include fs(24);
+      margin-bottom: 38px;
+    }
+  }
+}
+
+// chart-a
+.chart-a {
+  @include mq() {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-list {
+    @include mq() {
+      background-image: url("../img/chart-bg-arrow.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      flex: 1 1 auto;
+    }
+  }
+
+  &-item {
+    position: relative;
+
+    &:not(:last-of-type) {
+      &::before {
+        content: "";
+        display: block;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-style: solid;
+        border-width: 15px 15px 0 15px;
+        position: absolute;
+
+        @include mq() {
+          content: none;
+        }
+      }
+    }
+
+    &-wrap {
+      border-radius: 10px;
+      border: 1px solid;
+      overflow: hidden;
+
+      @include mq() {
+        display: flex;
+        align-items: stretch;
+      }
+    }
+
+    &:nth-of-type(n + 2) {
+      @include vwmt(30);
+
+      @include mq() {
+        margin-top: 0;
+      }
+    }
+
+    &:nth-of-type(1) {
+      @include mq() {
+        margin-top: 156px;
+      }
+
+      &::before {
+        border-color: $c1 transparent transparent transparent;
+      }
+      .chart-a-item {
+        &-wrap {
+          border-color: $c1;
+        }
+
+        &-ttl {
+          background: $c1;
+        }
+
+        &-subttl {
+          color: $c1;
+        }
+      }
+    }
+
+    &:nth-of-type(2) {
+      @include mq() {
+        margin-top: 243px;
+      }
+
+      &::before {
+        border-color: $c2 transparent transparent transparent;
+      }
+      .chart-a-item {
+        &-wrap {
+          border-color: $c2;
+        }
+
+        &-ttl {
+          background: $c2;
+        }
+
+        &-subttl {
+          color: $c2;
+        }
+      }
+    }
+
+    &:nth-of-type(3) {
+      @include mq() {
+        margin-top: 89px;
+      }
+
+      .chart-a-item {
+        &-wrap {
+          border-color: $c3;
+        }
+
+        &-ttl {
+          background: $c3;
+        }
+
+        &-subttl {
+          color: $c3;
+        }
+      }
+    }
+
+    &-ttl {
+      text-align: center;
+      color: $white;
+      @include vwh(45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include vwfs(16);
+
+      @include mq() {
+        flex: 0 0 auto;
+        width: 260px;
+        height: auto;
+        @include fs(20);
+        @include lh(20, 30);
+      }
+    }
+
+    &-in {
+      @include vwp(15);
+      background: $white;
+
+      @include mq() {
+        padding: 34px 30px;
+        flex: 1 1 auto;
+      }
+    }
+
+    &-subttl {
+      text-align: center;
+      @include vwfs(18);
+      font-weight: 700;
+      @include vwmb(10);
+
+      @include mq() {
+        @include fs(22);
+        margin-bottom: 20px;
+      }
+    }
+
+    &-txt {
+      @include vwfs(14);
+      @include lh(14, 22);
+
+      @include mq() {
+        @include fs(16);
+      }
+    }
+  }
+}
+
+// chart-b
+.chart-b {
+  &-group {
+    &:nth-of-type(n + 2) {
+      @include vwmt(30);
+
+      @include mq() {
+        margin-top: 30px;
+      }
+    }
+
+    &:nth-of-type(1) {
+      .chart-b {
+        &-group {
+          &-ttl {
+            color: $c0;
+          }
+        }
+
+        &-list {
+          &::before {
+            background: $c0;
+          }
+        }
+
+        &-item {
+          &-ttl {
+            background: $c0;
+          }
+
+          &-program {
+            color: $c0;
+          }
+        }
+      }
+    }
+
+    &:nth-of-type(2) {
+      .chart-b {
+        &-group {
+          &-ttl {
+            color: $c1;
+          }
+        }
+
+        &-list {
+          &::before {
+            background: $c1;
+          }
+        }
+
+        &-item {
+          &-ttl {
+            background: $c1;
+          }
+
+          &-program {
+            color: $c1;
+          }
+        }
+      }
+    }
+
+    &:nth-of-type(3) {
+      .chart-b {
+        &-group {
+          &-ttl {
+            color: $c2;
+          }
+        }
+
+        &-list {
+          &::before {
+            background: $c2;
+          }
+        }
+
+        &-item {
+          &-ttl {
+            background: $c2;
+          }
+
+          &-program {
+            color: $c2;
+          }
+        }
+      }
+    }
+
+    &:nth-of-type(4) {
+      .chart-b {
+        &-group {
+          &-ttl {
+            color: $c3;
+          }
+        }
+        &-list {
+          &::before {
+            background: $c3;
+          }
+        }
+
+        &-item {
+          &-ttl {
+            background: $c3;
+          }
+
+          &-program {
+            color: $c3;
+          }
+        }
+      }
+    }
+
+    &:nth-of-type(5) {
+      .chart-b {
+        &-group {
+          &-ttl {
+            color: $c4_txt;
+          }
+        }
+
+        &-list {
+          &::before {
+            background: $c4;
+          }
+        }
+
+        &-item {
+          &-ttl {
+            background: $c4;
+          }
+
+          &-program {
+            color: $c4_txt;
+          }
+        }
+      }
+    }
+
+    &-ttl {
+      text-align: center;
+      @include vwfs(18);
+      font-weight: 700;
+      @include vwmb(10);
+
+      @include mq() {
+        @include fs(18);
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  &-list {
+    border-radius: 10px 0 0 10px;
+    overflow: hidden;
+    position: relative;
+
+    // 位置検証用
+    // &::after {
+    //   content: "";
+    //   display: block;
+    //   top: 0;
+    //   right: 100%;
+    //   width: 200px;
+    //   height: 1px;
+    //   background: $red;
+    //   position: absolute;
+    // }
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      @include vww(245);
+      height: 1px;
+
+      @include mq() {
+        width: 470px;
+      }
+    }
+  }
+
+  &-item {
+    display: flex;
+
+    &:nth-of-type(n + 2) {
+      border-top: thin solid $c-border;
+    }
+
+    &-ttl {
+      flex: 0 0 auto;
+      @include vww(66);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include vwfs(16);
+      font-weight: 700;
+      color: $white;
+
+      @include mq() {
+        width: 76px;
+        @include fs(18);
+      }
+    }
+
+    &-program {
+      display: flex;
+      flex-wrap: wrap;
+      @include vwptb(10);
+      @include vwpl(14);
+      @include vwpr(10);
+
+      @include mq() {
+        padding: 8px 10px 8px 15px;
+      }
+
+      &-item {
+        flex: 0 0 auto;
+        width: auto;
+        margin-right: 1em;
+        @include vwfs(16);
+        @include lh(16, 22);
+        font-weight: 500;
+
+        @include mq() {
+          @include fs(18);
+          @include lh(18, 26);
+        }
+
+        .small {
+          @include vwfs(12);
+          font-weight: 400;
+
+          @include mq() {
+            @include fs(14);
+          }
+        }
+
+        .label {
+          @include vwfs(12);
+          padding: 0.2em 0.4em;
+          border: thin solid $red;
+          border-radius: 5px;
+          margin-left: 0.6em;
+          display: inline-block;
+          transform: translateY(-0.14em);
+
+          @include mq() {
+            @include fs(12);
+            margin-left: 0.8em;
+            padding: 0.2em 0.6em;
+          }
+        }
+      }
+    }
+
+    &-txt {
+      @include vwptb(10);
+      @include vwpl(14);
+      @include vwpr(10);
+      background: $c-bg;
+      @include vwfs(13);
+      @include lh(13, 20);
+
+      @include mq() {
+        padding: 8px 10px 8px 15px;
+        @include fs(14);
+        @include lh(14, 20);
+      }
+    }
+  }
+
+  &-caption {
+    @include vwfs(12);
+    @include lh(12, 17);
+    @include vwmt(15);
+
+    @include mq() {
+      margin-top: 20px;
+      @include fs(12);
+    }
+  }
+}
+
+// voice
+.voice {
+  @include vwpt(100);
+  @include vwpb(100);
+  background: $st-bg;
+  overflow: hidden;
+
+  @include mq() {
+    padding-top: 150px;
+    padding-bottom: 150px;
+  }
+
+  &-slider {
+    @include vwmt(46);
+
+    @include mq() {
+      width: 1172px;
+      margin: 96px auto 0;
+    }
+  }
+
+  &-list {
+    position: relative;
+
+    .slick {
+      &-list {
+        overflow: visible;
+      }
+
+      &-arrow {
+        display: block;
+        background-image: url("../img/voice-slider-arrow.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        top: 94px;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        z-index: 9;
+      }
+
+      &-prev {
+        left: 36px - 60px;
+      }
+
+      &-next {
+        right: 36px - 60px;
+        transform: scale(-1, 1);
+      }
+    }
+  }
+
+  &-item {
+    &-in {
+      @include vwmr(30);
+
+      @include mq() {
+        margin: 0 36px;
+      }
+    }
+
+    &-ttl {
+      text-align: center;
+      @include vwfs(18);
+      @include lh(18, 28);
+      font-weight: 700;
+      @include vwmt(20);
+
+      @include mq() {
+        @include fs(18);
+        margin-top: 20px;
+      }
+    }
+
+    &-prof {
+      text-align: center;
+      @include vwfs(18);
+      @include vwmt(10);
+      position: relative;
+
+      @include mq() {
+        margin-top: 10px;
+        @include fs(18);
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: calc(50% - 0.5px);
+        @include vww(50);
+        height: 1px;
+        background: $red;
+
+        @include mq() {
+          width: 50px;
+        }
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+    }
+
+    &-txt {
+      @include vwfs(14);
+      @include lh(14, 24);
+      @include vwmt(16);
+
+      @include mq() {
+        margin-top: 16px;
+        @include fs(16);
+        @include lh(16, 24);
+      }
+    }
+
+    &-link {
+      @include vww(150);
+      @include vwh(34);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      @include gotham;
+      @include vwfs(12);
+      font-weight: 700;
+      border-radius: 100px;
+      background: $dark;
+      color: $white;
+      margin: 0 auto;
+      @include vwmt(20);
+
+      @include mq() {
+        width: 150px;
+        height: 34px;
+        @include fs(12);
+        margin-top: 20px;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        @include vwr(15);
+        @include vww(4);
+        @include vwh(8);
+        background-image: url("../img/voice-arrow-left.svg");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include mq() {
+          width: 4px;
+          height: 8px;
+          right: 15px;
+        }
+      }
+    }
+  }
+}
+
+// consultation
+#consultation {
+  .caption-bottom {
+    font-weight: 400;
+    @include vwfs(14);
+    text-align: center;
+    @include vwmt(6);
+
+    @include mq() {
+      width: 420px;
+      @include fs(14);
+      margin-top: 8px;
+    }
+  }
+}
+
+// price
+#price {
+  background: $white;
+
+  @include mq() {
+    background: $c-bg;
+  }
+
+  .image_box {
+    position: relative;
+    top: 0 !important;
+
+    @include mq() {
+      position: absolute;
+      height: 583px;
+    }
+
+    img {
+      @include mq() {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .wrap {
+    .lead_box {
+      padding: 36px 0 0;
+      margin: 0 auto;
+      width: 100%;
+
+      @include mq() {
+        height: 583px;
+        width: 800px;
+        margin: 0 0 0 auto;
+        padding: 140px 50px 64px;
+      }
+    }
+  }
+
+  .price {
+    margin: 0 auto;
+    @include vwmt(24);
+    @include vww(291);
+    text-align: right;
+
+    @include mq() {
+      width: 456px;
+      margin-top: 72px;
+    }
+
+    .top {
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+
+    .bottom {
+      @include vwfs(12);
+      font-weight: 400;
+
+      @include mq() {
+        @include fs(16);
+      }
+    }
+  }
+
+  .otp {
+    @include vwmt(10);
+
+    @include mq() {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    &-in {
+      @include vwfs(14);
+      font-weight: 700;
+      text-align: center;
+      @include vwptb(8);
+      border: thin solid $dark-line;
+
+      @include mq() {
+        @include fs(18);
+        padding: 6px 16px 7px;
+        flex: 0 0 auto;
+      }
+    }
+  }
+
+  .caption {
+    font-weight: 400;
+    margin-top: 10px;
+    @include vwfs(12);
+    @include lh(12, 20);
+
+    @include mq() {
+      margin-top: 35px;
+      @include fs(12);
+    }
+  }
+}
+
+// introduction
+.introduction-wrap {
+  @include vwptb(30);
+
+  @include mq() {
+    padding: 100px 0;
+  }
+}
+
+.introduction {
+  height: 224px;
+  padding: 10px;
+  background: url(../img/bg_price_intro.jpg) no-repeat center/cover;
+}
+@media screen and (max-width: 812px) {
+  .introduction {
+    background-image: url(../img/bg_price_intro_sp.jpg);
+    padding: 2.6666666667vw;
+    height: 118.9333333333vw;
+  }
+}
+.introduction .inner {
+  border: solid 2px #fff;
+  height: 100%;
+}
+.introduction .lead {
+  margin-top: 29px;
+}
+@media screen and (min-width: 813px) {
+  .introduction .lead {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 812px) {
+  .introduction .lead {
+    margin-top: 8vw;
+  }
+}
+.introduction .lead p {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #fff;
+}
+@media screen and (max-width: 812px) {
+  .introduction .lead p {
+    font-size: 4.8vw;
+    text-align: center;
+    line-height: 1.5555555556;
+  }
+}
+.introduction .lead .or {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #fff;
+  color: #333;
+}
+@media screen and (max-width: 812px) {
+  .introduction .lead .or {
+    width: 12.8vw;
+    height: 12.8vw;
+    font-size: 3.2vw;
+    margin: 2.6666666667vw auto;
+  }
+}
+.introduction .price_box {
+  text-align: center;
+  margin-top: 24px;
+}
+@media screen and (max-width: 812px) {
+  .introduction .price_box {
+    width: 68.5333333333vw;
+    margin: 7.7333333333vw auto 0;
+  }
+}
+
+#price .merit {
+  @include vwmt(26);
+
+  @include mq() {
+    margin-top: 50px;
+  }
+
+  li {
+    @include mq() {
+      width: 100%;
+      display: flex;
+    }
+
+    .ttl,
+    .txt {
+      @include mq() {
+        width: 580px;
+        flex: 0 0 auto;
+      }
+    }
+
+    .ttl {
+      @include mq() {
+        height: 82px;
+      }
+    }
+
+    .txt {
+      font-weight: 400;
+
+      @include mq() {
+        margin-top: 0;
+        margin-left: 40px;
+      }
+    }
+  }
+}
+
+// comp
+.comp {
+  @include vwptb(100);
+
+  @include mq() {
+    padding: 150px 0;
+  }
+
+  &-ttl {
+    .bottom {
+      @include vwfs(23);
+
+      @include mq() {
+        @include fs(36);
+      }
+    }
+  }
+
+  &-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    &-wrap {
+      @include vwmt(34);
+
+      @include mq() {
+        margin-top: 60px;
+      }
+    }
+
+    th,
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    thead {
+      th {
+        color: $white;
+        font-weight: 700;
+        border-radius: 10px 10px 0 0;
+        @include vwfs(10);
+        @include lh(10, 13);
+        @include vwh(50);
+
+        @include mq() {
+          height: 80px;
+          @include fs(20);
+        }
+
+        &:nth-of-type(2) {
+          background: $red;
+        }
+
+        &:not(:last-of-type) {
+          @include vwfs(14);
+
+          @include mq() {
+            @include fs(20);
+          }
+        }
+
+        &:nth-of-type(n + 3) {
+          background: $table-navy;
+          border-left: thin solid $white;
+        }
+      }
+    }
+
+    tbody {
+      th,
+      td {
+        border-bottom: thin solid $dark-line;
+
+        @include mq() {
+          height: 120px;
+        }
+      }
+
+      th {
+        border-right: 2px solid $red;
+        font-weight: 700;
+        @include vwfs(10);
+        @include lh(10, 16);
+
+        @include mq() {
+          @include fs(18);
+          @include lh(18, 30);
+        }
+      }
+
+      td {
+        @include vwfs(10);
+        @include lh(10, 16);
+        @include vwptb(10);
+        @include vwplr(15);
+        text-align: left;
+
+        @include mq() {
+          @include fs(16);
+          @include lh(16, 28);
+          width: 328px;
+          padding: 0;
+          text-align: center;
+        }
+
+        &.center {
+          text-align: center;
+        }
+
+        &:not(:last-of-type) {
+          border-right: thin solid $dark-line;
+        }
+
+        &:first-of-type {
+          border-right: 2px solid $red;
+          color: $red;
+          font-weight: 700;
+          background: $table-light-red;
+          font-weight: 700;
+          width: calc(120 / 325 * 100%);
+        }
+
+        &:nth-of-type(n + 2) {
+          width: calc(63 / 325 * 100%);
+        }
+      }
+
+      tr {
+        &:last-of-type {
+          td:first-of-type {
+            border-bottom: 2px solid $red;
+          }
+        }
+      }
+    }
+  }
+}
+
+// point-bnr
+.point-bnr {
+  background: $c-bg;
+  @include vwptb(60);
+
+  @include mq() {
+    padding: 100px 0;
+  }
+
+  &-in {
+    @include mq() {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &-heading {
+    @include vww(302);
+    margin: 0 auto;
+
+    @include mq() {
+      width: 270px;
+      margin: 0;
+    }
+  }
+
+  &-ttl {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &-list {
+    @include vwmt(40);
+
+    @include mq() {
+      margin-top: 0;
+      display: flex;
+    }
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+
+    @include mq() {
+      flex-direction: column;
+      width: 270px;
+      text-align: center;
+    }
+
+    &:nth-of-type(n + 2) {
+      @include vwmt(24);
+
+      @include mq() {
+        margin-top: 0;
+        margin-left: 24px;
+      }
+    }
+
+    &-ttl {
+      @include vwh(54);
+      flex: 0 0 auto;
+      @include vww(66);
+      text-align: center;
+
+      @include mq() {
+        width: auto;
+        height: 74px;
+      }
+
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+
+    &-txt {
+      font-weight: 700;
+      @include vwml(32);
+      @include vwfs(16);
+      @include lh(16, 24);
+
+      @include mq() {
+        margin-left: 0;
+        margin-top: 20px;
+        @include fs(18);
+        @include lh(18, 30);
+      }
+    }
+  }
+
+  &-link {
+    text-align: center;
+    @include vwmt(40);
+
+    @include mq() {
+      margin-top: 24px;
+    }
+
+    &-btn {
+      font-weight: 700;
+      color: $white;
+      background: $dark;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+      margin: 0 auto;
+      @include vww(150);
+      @include vwh(38);
+      @include vwfs(14);
+
+      @include mq() {
+        width: 150px;
+        height: 38px;
+        @include fs(16);
+      }
+
+      &::after {
+        content: "";
+        display: inline-block;
+        @include vww(12);
+        @include vwh(12);
+        @include vwml(10);
+        background-image: url("../img/point-bnr-arrow.svg");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: translateY(20%);
+
+        @include mq() {
+          width: 14px;
+          height: 14px;
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+}

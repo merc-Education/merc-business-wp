@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+@use  "config" as *;
+
+@include devicePC{
+	.nopc{
+		display: none !important;
+	}
+}
+
+@include deviceSP{
+	.nosp{
+		display: none !important;
+	}
+}
+
+
+/* clearfix
+---------------------------------------------------------------------------- */
+.clearfix{
+	zoom: 1;
+}
+.clearfix:after{
+	content: "";
+	clear: both;
+	display: block;
+}
+
+/* text
+---------------------------------------------------------------------------- */
+.tal{
+	text-align: left !important;
+}
+.tac{
+	text-align: center !important;
+}
+.tar{
+	text-align: right !important;
+}
+.fwb{
+	font-weight: bold !important;
+}
+@include deviceSP{
+	.sptal{
+		text-align: left !important;
+	}
+	.sptac{
+		text-align: center !important;
+	}
+	.sptar{
+		text-align: right !important;
+	}
+	.spfwb{
+		font-weight: bold !important;
+	}
+}
+
+/* margin
+---------------------------------------------------------------------------- */
+$i: 100;
+@while $i > -5 {
+	.mt#{$i} {
+		margin-top: #{$i}px !important;
+	}
+	.mb#{$i} {
+		margin-bottom: #{$i}px !important;
+	}
+	.ml#{$i} {
+		margin-left: #{$i}px !important;
+	}
+	.mr#{$i} {
+		margin-right: #{$i}px !important;
+	}
+	$i: $i - 5;
+}
+@include deviceSP{
+	$i: 100;
+	@while $i > -5 {
+		.spmt#{$i} {
+			margin-top: #{$i / 360 * 100}vw !important;
+		}
+		.spmb#{$i} {
+			margin-bottom: #{$i / 360 * 100}vw !important;
+		}
+		.spml#{$i} {
+			margin-left: #{$i / 360 * 100}vw !important;
+		}
+		.spmr#{$i} {
+			margin-right: #{$i / 360 * 100}vw !important;
+		}
+		$i: $i - 5;
+	}
+}
+
+/* padding
+---------------------------------------------------------------------------- */
+$i: 100;
+@while $i > -5 {
+	.pt#{$i} {
+		padding-top: #{$i}px !important;
+	}
+	.pb#{$i} {
+		padding-bottom: #{$i}px !important;
+	}
+	.pl#{$i} {
+		padding-left: #{$i}px !important;
+	}
+	.pr#{$i} {
+		padding-right: #{$i}px !important;
+	}
+	$i: $i - 5;
+}
+@include deviceSP{
+	$i: 100;
+	@while $i > -5 {
+		.sppt#{$i} {
+			padding-top: #{$i / 360 * 100}vw !important;
+		}
+		.sppb#{$i} {
+			padding-bottom: #{$i / 360 * 100}vw !important;
+		}
+		.sppl#{$i} {
+			padding-left: #{$i / 360 * 100}vw !important;
+		}
+		.sppr#{$i} {
+			padding-right: #{$i / 360 * 100}vw !important;
+		}
+		$i: $i - 5;
+	}
+}
