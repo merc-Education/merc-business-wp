@@ -99,7 +99,7 @@ function get_related_posts($post_id, $category_id) {
  * スラッグを日付に変換する関数
  */
 function slug_to_date($slug) {
-	if (!preg_match('/^\d{8}(_\d+)?$/', $slug)) {
+	if (!preg_match('/^\d{8}(-\d+)?$/', $slug)) {
 		return null;
 	}
 
