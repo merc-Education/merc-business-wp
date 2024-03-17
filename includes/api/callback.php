@@ -164,8 +164,12 @@ function get_home_posts($request) {
 	];
 
 	foreach ($categories as $category => $args) {
-		$args['category_name'] = $category;
+		if ($category !== 'blog') {
+			$args['category_name'] = $category;
+		}
+
 		$posts = get_posts_by_args($args);
+
 		if (in_array($category, ['interview', 'seminar'])) {
 			foreach ($posts as &$post) {
 				$post['modifiedDate'] = slug_to_date($post['slug']);

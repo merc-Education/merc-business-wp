@@ -230,3 +230,60 @@ add_action('init', 'create_custom_post_types');
 
 // カスタムエンドポイント追加
 include get_stylesheet_directory() . '/functions/api-endpoints.php';
+
+// Webhook通知設定
+function post_save_wordpress($post_id, $post_after, $post_before) {
+	if ((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) ||
+		wp_is_post_revision($post_id) ||
+		!in_array($post_after->post_type, ['post', 'corporate', 'consulting'])
+	) {
+		return;
+	}
+
+	$prev_status = $post_before->post_status;
+	$new_status = $post_after->post_status;
+
+	error_log("Previous status: $prev_status, New status: $new_status");
+
+	if (($prev_status === 'publish' && in_array($new_status, ['draft', 'trash', 'private'])) ||
+		($prev_status !== 'publish' && $new_status === 'publish') ||
+		($prev_status === 'publish' && $new_status === 'publish')
+	) {
+		// 環境変数からWebhook URLとGitHub Tokenを取得
+		$webhook_url = WEBHOOK_URL;
+		$token = GITHUB_TOKEN;
+
+		// Webhookに送信するデータ
+		$data = [
+			'event_type' => 'post_save_wordpress',
+			'client_payload' => array(
+				'post_id' => $post_id,
+				'message' => 'A post was created or updated.'
+			)
+		];
+
+		// リクエストのヘッダー
+		$headers = [
+			'Authorization' => 'Bearer ' . $token,
+			'Content-Type' => 'application/json',
+			'User-Agent' => 'post_save_wordpress'
+		];
+
+		// WordPressのHTTP APIを使用してPOSTリクエストを送信
+		$response = wp_remote_post($webhook_url, array(
+			'headers' => $headers,
+			'body' => json_encode($data),
+			'method' => 'POST',
+			'data_format' => 'body'
+		));
+
+		// 応答をチェック（必要に応じてエラーハンドリングを追加）
+		if (is_wp_error($response)) {
+			$error_message = $response->get_error_message();
+			// エラーログにメッセージを記録
+			error_log("GitHub Actions Webhook Error: $error_message");
+		}
+	}
+}
+
+add_action('post_updated', 'post_save_wordpress', 10, 3);

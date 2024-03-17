@@ -51,7 +51,19 @@ function get_adjacent_post_custom($post_id, $category_id, $previous = true) {
 	];
 
 	$query = new WP_Query($args);
-	return $query->have_posts() ? $query->posts[0] : null;
+	if (!$query->have_posts()) {
+		return null;
+	}
+
+	$adjacent_post = $query->posts[0];
+	return [
+		'id' => $adjacent_post->ID,
+		'title' => get_the_title($adjacent_post->ID),
+		'link' => get_permalink($adjacent_post->ID),
+		'postType' => get_post_type($adjacent_post->ID),
+		'thumbnail' => get_thumbnail_url($adjacent_post->ID, 'thumbnail'),
+		'date' => get_the_date('Y.n.j', $adjacent_post->ID),
+	];
 }
 
 /**
@@ -59,6 +71,7 @@ function get_adjacent_post_custom($post_id, $category_id, $previous = true) {
  */
 function get_related_posts($post_id, $category_id) {
 	$args = [
+		'post_type' => ['post', 'corporate', 'consulting'],
 		'category__in' => [$category_id],
 		'posts_per_page' => 4,
 		'post__not_in' => [$post_id],
