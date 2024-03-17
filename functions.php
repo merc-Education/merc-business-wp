@@ -287,3 +287,7 @@ function post_save_wordpress($post_id, $post_after, $post_before) {
 }
 
 add_action('post_updated', 'post_save_wordpress', 10, 3);
+
+add_action('rest_api_init', function () {
+	remove_filter('rest_pre_serve_request', 'rest_send_cors_headers');
+}, 15);
