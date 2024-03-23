@@ -101,7 +101,8 @@ function get_post_custom_2($request) {
 	if (!$post) return null;
 
 	$category = get_category_info($post_id);
-	$thumbnail_url = get_thumbnail_url($post_id);
+	$hide_thumbnail = get_post_meta($post_id, 'emanon_none_display_thumbnail', true);
+	$thumbnail_url = empty($hide_thumbnail) ? get_thumbnail_url($post_id) : null;
 	$author_info = [
 		'icon' => get_avatar_url($post->post_author),
 		'name' => get_the_author_meta('display_name', $post->post_author),

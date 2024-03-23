@@ -291,3 +291,15 @@ add_action('post_updated', 'post_save_wordpress', 10, 3);
 add_action('rest_api_init', function () {
 	remove_filter('rest_pre_serve_request', 'rest_send_cors_headers');
 }, 15);
+
+/**
+ * アイキャッチの表示を分岐するフィールドをカスタム投稿に追加（親テーマで設定されたもの）
+ */
+function emanon_add_thumbnail_meta_box_to_custom_post_types() {
+	$custom_post_types = ['corporate', 'consulting'];
+
+	foreach ($custom_post_types as $post_type) {
+		add_meta_box('thumbnail_setting', __('Thumbnail setting', 'emanon'), 'thumbnail_setting_form', $post_type, 'side', 'low');
+	}
+}
+add_action('admin_menu', 'emanon_add_thumbnail_meta_box_to_custom_post_types');
