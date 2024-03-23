@@ -39,7 +39,7 @@ function get_adjacent_post_custom($post_id, $category_id, $previous = true) {
 	}
 
 	$args = [
-		'post_type' => get_post_type($post),
+		'post_type' => ['post', 'corporate', 'consulting'],
 		'posts_per_page' => 1,
 		'order' => $previous ? 'DESC' : 'ASC',
 		'date_query' => array(
