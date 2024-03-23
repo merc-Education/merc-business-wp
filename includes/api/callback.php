@@ -137,7 +137,7 @@ function get_home_posts($request) {
 			'post_type' => 'corporate',
 			'posts_per_page' => 3,
 		],
-		'interview' => [
+		'case' => [
 			'post_type' => ['post', 'corporate', 'consulting'],
 			'posts_per_page' => 100,
 			'meta_query' => [
@@ -170,7 +170,7 @@ function get_home_posts($request) {
 
 		$posts = get_posts_by_args($args);
 
-		if (in_array($category, ['interview', 'seminar'])) {
+		if (in_array($category, ['case', 'seminar'])) {
 			foreach ($posts as &$post) {
 				$post['modifiedDate'] = slug_to_date($post['slug']);
 			}
