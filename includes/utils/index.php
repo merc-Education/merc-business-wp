@@ -10,12 +10,14 @@ function get_category_info($post_id) {
 			'id' => 1,
 			'name' => 'uncategorized',
 			'slug' => 'uncategorized',
+			'description' => '未分類'
 		];
 	}
 	return [
 		'id' => $categories[0]->term_id,
 		'name' => $categories[0]->name,
 		'slug' => $categories[0]->slug,
+		'description' => $categories[0]->description
 	];
 }
 
