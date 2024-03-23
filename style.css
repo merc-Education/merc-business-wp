@@ -68,7 +68,7 @@ section.article-body p {
   background: #000;
 }
 .c-footer * {
-  color: #fff!important;
+  color: #fff !important;
 }
 @media screen and (max-width: 767px) {
   .c-footer {
@@ -95,10 +95,10 @@ section.article-body p {
   display: flex;
   -ms-flex-pack: justify;
   -webkit-box-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   -ms-flex-align: end;
   -webkit-box-align: end;
-          align-items: flex-end;
+  align-items: flex-end;
   border-bottom: 1px solid #fff;
   padding: 0 0 1em;
 }
@@ -139,10 +139,10 @@ section.article-body p {
   display: flex;
   -ms-flex-pack: justify;
   -webkit-box-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   -ms-flex-align: start;
   -webkit-box-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
   margin-top: 1.125em;
 }
 @media screen and (max-width: 767px) {
@@ -156,10 +156,10 @@ section.article-body p {
   display: flex;
   -ms-flex-pack: start;
   -webkit-box-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
   -ms-flex-align: center;
   -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
   font-size: 2.8rem;
   font-weight: 700;
   line-height: 1;
@@ -228,10 +228,10 @@ section.article-body p {
   display: flex;
   -ms-flex-pack: justify;
   -webkit-box-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   -ms-flex-align: center;
   -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
   margin: 2.25em auto 0;
 }
 @media screen and (max-width: 767px) {
@@ -277,5 +277,22 @@ section.article-body p {
     text-align: left;
     font-size: 1.2rem;
     margin-top: 13vw;
+  }
+}
+@media screen and (max-width: 991px) {
+  #gnav {
+    display: block;
+  }
+  #gnav ul {
+    display: flex;
+    overflow-x: scroll;
+  }
+  #gnav li {
+    flex-shrink: 0;
+  }
+  #gnav a {
+    display: inline-block;
+    color: #fff;
+    padding: 14px;
   }
 }
