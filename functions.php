@@ -243,8 +243,6 @@ function post_save_wordpress($post_id, $post_after, $post_before) {
 	$prev_status = $post_before->post_status;
 	$new_status = $post_after->post_status;
 
-	error_log("Previous status: $prev_status, New status: $new_status");
-
 	if (($prev_status === 'publish' && in_array($new_status, ['draft', 'trash', 'private'])) ||
 		($prev_status !== 'publish' && $new_status === 'publish') ||
 		($prev_status === 'publish' && $new_status === 'publish')
@@ -252,10 +250,11 @@ function post_save_wordpress($post_id, $post_after, $post_before) {
 		// 環境変数からWebhook URLとGitHub Tokenを取得
 		$webhook_url = WEBHOOK_URL;
 		$token = GITHUB_TOKEN;
+		$event_type = EVENT_TYPE;
 
 		// Webhookに送信するデータ
 		$data = [
-			'event_type' => 'post_save_wordpress',
+			'event_type' => $event_type,
 			'client_payload' => array(
 				'post_id' => $post_id,
 				'message' => 'A post was created or updated.'
@@ -266,7 +265,7 @@ function post_save_wordpress($post_id, $post_after, $post_before) {
 		$headers = [
 			'Authorization' => 'Bearer ' . $token,
 			'Content-Type' => 'application/json',
-			'User-Agent' => 'post_save_wordpress'
+			'User-Agent' => $event_type
 		];
 
 		// WordPressのHTTP APIを使用してPOSTリクエストを送信
@@ -280,8 +279,12 @@ function post_save_wordpress($post_id, $post_after, $post_before) {
 		// 応答をチェック（必要に応じてエラーハンドリングを追加）
 		if (is_wp_error($response)) {
 			$error_message = $response->get_error_message();
-			// エラーログにメッセージを記録
 			error_log("GitHub Actions Webhook Error: $error_message");
+		} else {
+			$response_code = wp_remote_retrieve_response_code($response);
+			$response_body = wp_remote_retrieve_body($response);
+			error_log("GitHub Actions Webhook Response Code: $response_code");
+			error_log("GitHub Actions Webhook Response Body: $response_body");
 		}
 	}
 }
