@@ -7,25 +7,46 @@ include get_stylesheet_directory() . '/includes/utils/index.php';
  * 人気記事
  */
 function get_popular_posts() {
-	$query_params = [
-		'order_by' => 'views',
-		'range' => 'monthly',
-		'post_type' => 'post,corporate,consulting',
-		'limit' => 5,
+	$args = [
+		'post_type' => ['post', 'corporate', 'consulting'],
+		'posts_per_page' => -1,
+		'meta_key' => 'popular_posts',
+		'orderby' => 'meta_value_num',
+		'order' => 'ASC',
+		'meta_query' => [
+			[
+				'key' => 'popular_posts',
+				'value' => [1, 5],
+				'compare' => 'BETWEEN',
+				'type' => 'NUMERIC',
+			],
+		],
 	];
-	$query = new \WordPressPopularPosts\Query($query_params);
-	$popular_posts = $query->get_posts();
+	$popular_posts = get_posts($args);
+
+	$processed_posts = [];
+	foreach ($popular_posts as $post) {
+		$popular_posts_value = get_post_meta($post->ID, 'popular_posts', true);
+
+		if (!isset($processed_posts[$popular_posts_value])) {
+			$processed_posts[$popular_posts_value] = $post;
+		}
+	}
+
+	// 配列をpopular_postsの値でソート（念のため）
+	ksort($processed_posts);
+	$processed_posts_array = array_values($processed_posts);
 
 	$data = array_map(function ($post) {
+		$post_id = $post->ID;
 		return [
-			'id' => $post->id,
-			'title' => $post->title,
-			'link' => get_permalink($post->id),
-			'postType' => get_post_type($post->id),
-			'category' => get_category_info($post->id),
-			'slug' => get_post_field('post_name', $post->id),
+			'id' => $post_id,
+			'title' => $post->post_title,
+			'link' => get_permalink($post_id),
+			'postType' => get_post_type($post_id),
+			'category' => get_category_info($post_id),
 		];
-	}, $popular_posts);
+	}, $processed_posts_array);
 
 	return new WP_REST_Response($data, 200);
 }
