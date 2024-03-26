@@ -186,10 +186,7 @@ function get_home_posts($request) {
 	];
 
 	foreach ($categories as $category => $args) {
-		if ($category !== 'blog') {
-			$args['category_name'] = $category;
-		}
-
+		$args['category_name'] = $category;
 		$posts = get_posts_by_args($args);
 
 		if (in_array($category, ['case', 'seminar'])) {
