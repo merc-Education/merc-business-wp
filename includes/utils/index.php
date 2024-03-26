@@ -139,7 +139,7 @@ function get_posts_by_args($args) {
 			'thumbnail' => $thumbnail_url,
 			'postType' => get_post_type($post_id),
 			'slug' => $post->post_name,
-			'date' => get_the_date('Y.n.j', $post_id),
+			'date' => get_the_date('Y.m.d', $post_id),
 			'category' => $category,
 		);
 	}, $posts);
