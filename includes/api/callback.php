@@ -155,10 +155,10 @@ function get_post_custom_2($request) {
  */
 function get_home_posts($request) {
 	$categories = [
-		'news' => [
-			'post_type' => 'corporate',
-			'posts_per_page' => 3,
-		],
+		// 'news' => [
+		// 	'post_type' => 'corporate',
+		// 	'posts_per_page' => 3,
+		// ],
 		'case' => [
 			'post_type' => ['post', 'corporate', 'consulting'],
 			'posts_per_page' => 100,
